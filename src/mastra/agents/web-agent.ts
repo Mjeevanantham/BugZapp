@@ -4,6 +4,7 @@ import { pageActTool } from '../tools/page-act-tool';
 import { pageObserveTool } from '../tools/page-observe-tool';
 import { pageExtractTool } from '../tools/page-extract-tool';
 import { pageNavigateTool } from '../tools/page-navigate-tool';
+import { qaRunTool } from '../tools/qa-run-tool';
 
 const memory = new Memory();
 
@@ -30,6 +31,6 @@ export const webAgent = new Agent({
       Use the pageNavigateTool to navigate to a URL.
 `,
   model: process.env.MODEL || 'openai/gpt-4o',
-  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool },
+  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool, qaRunTool },
   memory: memory,
 });
