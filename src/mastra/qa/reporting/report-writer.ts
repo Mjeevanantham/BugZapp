@@ -135,6 +135,9 @@ export const renderRunSummaryMarkdown = (input: RunReportInput): string => {
   } else {
     payload.bugReports.forEach((report, index) => {
       lines.push(`### ${index + 1}. ${report.title} (${report.severity})`);
+      lines.push(`- Priority: ${report.priority}`);
+      lines.push(`- Reproducibility: ${report.reproducibility}`);
+      lines.push(`- Component: ${report.component}`);
       lines.push(`- Observed: ${report.timestamps.observedAt}`);
       lines.push(`- Reported: ${report.timestamps.reportedAt}`);
       lines.push(`- Expected: ${report.expected}`);

@@ -126,24 +126,44 @@ main {
   color: #b95000;
 }
 
-.badge.low {
-  background: #d9f2ff;
-  color: #035388;
-}
-
-.badge.medium {
-  background: #fffbe2;
-  color: #b44d12;
-}
-
-.badge.high {
-  background: #ffe3c9;
-  color: #b44d12;
+.badge.blocker {
+  background: #ffccd5;
+  color: #7a0916;
 }
 
 .badge.critical {
   background: #ffe3e3;
   color: #a61b1b;
+}
+
+.badge.major {
+  background: #ffe3c9;
+  color: #b44d12;
+}
+
+.badge.minor {
+  background: #d9f2ff;
+  color: #035388;
+}
+
+.badge.p0 {
+  background: #ffccd5;
+  color: #7a0916;
+}
+
+.badge.p1 {
+  background: #ffe3c9;
+  color: #b44d12;
+}
+
+.badge.p2 {
+  background: #fffbe2;
+  color: #8f5b0a;
+}
+
+.badge.p3 {
+  background: #e6f7ff;
+  color: #0b69a3;
 }
 
 .detail-pane {
