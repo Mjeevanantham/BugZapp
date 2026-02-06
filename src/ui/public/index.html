@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BugZapp QA Runs</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>BugZapp QA Dashboard</h1>
+        <p>Review test runs, bug reports, and evidence artifacts.</p>
+      </div>
+      <div class="filters">
+        <label>
+          Run status
+          <select id="statusFilter">
+            <option value="">All</option>
+            <option value="pass">Pass</option>
+            <option value="fail">Fail</option>
+            <option value="blocked">Blocked</option>
+          </select>
+        </label>
+        <label>
+          Bug severity
+          <select id="severityFilter">
+            <option value="">All</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="critical">Critical</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section class="list-pane">
+        <div class="list-section">
+          <h2>Test Runs</h2>
+          <div id="runList" class="card-list"></div>
+        </div>
+        <div class="list-section">
+          <h2>Bug Reports</h2>
+          <div id="bugList" class="card-list"></div>
+        </div>
+      </section>
+      <section class="detail-pane" id="detailPane">
+        <div class="empty-state">
+          <h2>Select a run or bug report</h2>
+          <p>Use the list to review steps, evidence, and export reports.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
