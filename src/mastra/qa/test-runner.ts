@@ -3,6 +3,8 @@ import { pageExtractTool } from '../tools/page-extract-tool';
 import { pageNavigateTool } from '../tools/page-navigate-tool';
 import { pageObserveTool } from '../tools/page-observe-tool';
 import type { TestCase, TestStep, TestStepTool } from './test-case';
+import type { QaStorage } from './storage/storage';
+import { getDefaultQaStorage } from './storage';
 
 export type StepStatus = 'pass' | 'fail' | 'blocked';
 
@@ -70,11 +72,15 @@ export const getTestSuite = (suiteId: string) => testSuiteRegistry.get(suiteId);
 export const runTestSuite = async ({
   suiteId,
   testCases,
+  metadata,
+  storage,
 }: {
   suiteId?: string;
   testCases?: TestCase[];
+  metadata?: { tags?: string[]; url?: string };
+  storage?: QaStorage;
 }): Promise<TestRunSummary> => {
-  const resolvedTestCases = resolveTestCases(suiteId, testCases);
+  const { testCases: resolvedTestCases, suite } = resolveTestCases(suiteId, testCases);
   const startedAt = new Date();
   const testCaseResults: TestCaseResult[] = [];
   const evidence: EvidenceRecord[] = [];
@@ -89,7 +95,7 @@ export const runTestSuite = async ({
   const durationMs = endedAt.getTime() - startedAt.getTime();
   const status = aggregateStatus(testCaseResults.map(result => result.status));
 
-  return {
+  const summary: TestRunSummary = {
     status,
     durationMs,
     startedAt: startedAt.toISOString(),
@@ -98,11 +104,21 @@ export const runTestSuite = async ({
     evidence,
     evidenceRefs: collectEvidenceRefsFromEvidence(evidence),
   };
+
+  const qaStorage = storage ?? getDefaultQaStorage();
+  await qaStorage.saveTestRun({
+    summary,
+    suiteId,
+    suiteDescription: suite?.description,
+    metadata,
+  });
+
+  return summary;
 };
 
 const resolveTestCases = (suiteId?: string, testCases?: TestCase[]) => {
   if (testCases && testCases.length > 0) {
-    return testCases;
+    return { testCases, suite: undefined };
   }
 
   if (!suiteId) {
@@ -114,7 +130,7 @@ const resolveTestCases = (suiteId?: string, testCases?: TestCase[]) => {
     throw new Error(`Unknown test suite: ${suiteId}`);
   }
 
-  return suite.testCases;
+  return { testCases: suite.testCases, suite };
 };
 
 const runTestCase = async (testCase: TestCase) => {

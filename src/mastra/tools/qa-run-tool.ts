@@ -10,6 +10,8 @@ export const qaRunTool = createTool({
     .object({
       suiteId: z.string().optional(),
       testCases: z.array(testCaseSchema).optional(),
+      tags: z.array(z.string().min(1)).optional(),
+      url: z.string().url().optional(),
     })
     .refine(value => value.suiteId || (value.testCases && value.testCases.length > 0), {
       message: 'Provide either suiteId or a non-empty list of testCases.',
@@ -27,6 +29,10 @@ export const qaRunTool = createTool({
     return await runTestSuite({
       suiteId: input.suiteId,
       testCases: input.testCases,
+      metadata: {
+        tags: input.tags,
+        url: input.url,
+      },
     });
   },
 });
