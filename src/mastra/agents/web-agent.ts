@@ -4,6 +4,7 @@ import { pageActTool } from '../tools/page-act-tool';
 import { pageObserveTool } from '../tools/page-observe-tool';
 import { pageExtractTool } from '../tools/page-extract-tool';
 import { pageNavigateTool } from '../tools/page-navigate-tool';
+import { qaAssertTool } from '../tools/qa-assert-tool';
 
 const memory = new Memory();
 
@@ -28,8 +29,9 @@ export const webAgent = new Agent({
       Use the pageObserveTool to find elements on webpages.
       Use the pageExtractTool to extract data from webpages.
       Use the pageNavigateTool to navigate to a URL.
+      Use the qaAssertTool to validate expectations and capture bug reports when checks fail.
 `,
   model: process.env.MODEL || 'openai/gpt-4o',
-  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool },
+  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool, qaAssertTool },
   memory: memory,
 });
