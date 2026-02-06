@@ -25,6 +25,8 @@ const renderBadge = (value, type) => {
   badge.textContent = value;
   if (type === 'severity') {
     badge.title = 'Bug severity';
+  } else if (type === 'priority') {
+    badge.title = 'Bug priority';
   }
   return badge;
 };
@@ -75,6 +77,8 @@ const renderBugList = () => {
 
   state.bugs.forEach(bug => {
     const card = document.createElement('div');
+    const severity = bug.report.severity ?? 'minor';
+    const priority = bug.report.priority ?? 'p3';
     card.className = 'card';
     card.innerHTML = `
       <h3>${bug.report.title}</h3>
@@ -83,7 +87,8 @@ const renderBugList = () => {
         <span>${bug.report.urls?.[0] ?? 'No URL'}</span>
       </div>
     `;
-    card.querySelector('.meta').appendChild(renderBadge(bug.report.severity, 'severity'));
+    card.querySelector('.meta').appendChild(renderBadge(severity, 'severity'));
+    card.querySelector('.meta').appendChild(renderBadge(priority, 'priority'));
     card.addEventListener('click', () => renderBugDetail(bug));
     bugList.appendChild(card);
   });
@@ -185,7 +190,10 @@ const renderBugDetail = bug => {
     <h2>Bug Report</h2>
     <div class="key-value">
       <strong>Title</strong><span>${bug.report.title}</span>
-      <strong>Severity</strong><span>${bug.report.severity}</span>
+      <strong>Severity</strong><span>${bug.report.severity ?? 'N/A'}</span>
+      <strong>Priority</strong><span>${bug.report.priority ?? 'N/A'}</span>
+      <strong>Reproducibility</strong><span>${bug.report.reproducibility ?? 'N/A'}</span>
+      <strong>Component</strong><span>${bug.report.component ?? 'N/A'}</span>
       <strong>Observed</strong><span>${formatDate(bug.report.timestamps.observedAt)}</span>
       <strong>Reported</strong><span>${formatDate(bug.report.timestamps.reportedAt)}</span>
     </div>
@@ -221,8 +229,37 @@ const renderBugDetail = bug => {
   evidenceSection.innerHTML = '<h3>Evidence</h3>';
   evidenceSection.appendChild(renderBugEvidence(bug.report.evidence ?? []));
 
+  const environmentSection = document.createElement('div');
+  environmentSection.className = 'section';
+  environmentSection.innerHTML = `
+    <h3>Environment</h3>
+    <div class="key-value">
+      <strong>Name</strong><span>${bug.report.environment?.name ?? 'N/A'}</span>
+      <strong>URL</strong><span>${bug.report.environment?.url ?? 'N/A'}</span>
+      <strong>Locale</strong><span>${bug.report.environment?.locale ?? 'N/A'}</span>
+      <strong>Timezone</strong><span>${bug.report.environment?.timezone ?? 'N/A'}</span>
+    </div>
+    <h4>Browser</h4>
+    <div class="key-value">
+      <strong>Name</strong><span>${bug.report.browser?.name ?? 'N/A'}</span>
+      <strong>Version</strong><span>${bug.report.browser?.version ?? 'N/A'}</span>
+      <strong>User Agent</strong><span>${bug.report.browser?.userAgent ?? 'N/A'}</span>
+    </div>
+    <h4>Device</h4>
+    <div class="key-value">
+      <strong>Type</strong><span>${bug.report.device?.type ?? 'N/A'}</span>
+      <strong>Model</strong><span>${bug.report.device?.model ?? 'N/A'}</span>
+      <strong>OS</strong><span>${bug.report.device?.os ?? 'N/A'}</span>
+      <strong>OS Version</strong><span>${bug.report.device?.osVersion ?? 'N/A'}</span>
+      <strong>Viewport</strong><span>${
+        bug.report.device?.viewport ? `${bug.report.device.viewport.width}x${bug.report.device.viewport.height}` : 'N/A'
+      }</span>
+    </div>
+  `;
+
   wrapper.appendChild(header);
   wrapper.appendChild(stepsSection);
+  wrapper.appendChild(environmentSection);
   wrapper.appendChild(evidenceSection);
   detailPane.appendChild(wrapper);
 };

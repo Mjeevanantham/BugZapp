@@ -2,6 +2,7 @@ import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { sessionManager } from '../../lib/stage-hand';
 import { bugReportSchema } from '../qa/bug-report';
+import { inferBugTriageDefaults } from '../qa/triage';
 import { captureEvidence, createEvidenceCollector } from '../../lib/evidence-capture';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -51,7 +52,12 @@ export const qaAssertTool = createTool({
   inputSchema: z.object({
     url: z.string().optional().describe('URL to navigate to (optional if already on a page)'),
     title: z.string().describe('Short bug title if the assertion fails'),
-    severity: z.enum(['low', 'medium', 'high', 'critical']).optional().describe('Bug severity'),
+    severity: z.enum(['blocker', 'critical', 'major', 'minor']).optional().describe('Bug severity'),
+    priority: z.enum(['p0', 'p1', 'p2', 'p3']).optional().describe('Bug priority'),
+    reproducibility: z.enum(['always', 'sometimes', 'rare', 'unable']).optional().describe('Bug reproducibility'),
+    component: z.string().optional().describe('Owning component'),
+    environmentName: z.string().optional().describe('Environment name (e.g. staging, prod)'),
+    environmentUrl: z.string().optional().describe('Environment base URL'),
     steps: z.array(z.string()).describe('Reproduction steps'),
     assertions: z.array(assertionSchema).min(1).describe('Assertions to evaluate'),
     expected: z.string().optional().describe('Legacy expected result (optional)'),
@@ -191,7 +197,12 @@ const evaluateAssertion = async (page: any, assertion: AssertionInput): Promise<
 const performQaAssertion = async (input: {
   url?: string;
   title: string;
-  severity?: 'low' | 'medium' | 'high' | 'critical';
+  severity?: 'blocker' | 'critical' | 'major' | 'minor';
+  priority?: 'p0' | 'p1' | 'p2' | 'p3';
+  reproducibility?: 'always' | 'sometimes' | 'rare' | 'unable';
+  component?: string;
+  environmentName?: string;
+  environmentUrl?: string;
   steps: string[];
   assertions: AssertionInput[];
   expected?: string;
@@ -235,6 +246,8 @@ const performQaAssertion = async (input: {
 
     const observedAt = new Date().toISOString();
     const environment = {
+      name: input.environmentName,
+      url: input.environmentUrl,
       userAgent: await page.evaluate(() => navigator.userAgent).catch(() => undefined),
       viewport: page.viewportSize() ?? undefined,
       locale: await page.evaluate(() => navigator.language).catch(() => undefined),
@@ -247,14 +260,27 @@ const performQaAssertion = async (input: {
 
     const expectedSummary = input.expected ?? input.assertions.map(formatAssertionExpectation).join('; ');
     const actualSummary = input.actual ?? failures.map(failure => failure.message).join('; ');
+    const triageDefaults = inferBugTriageDefaults(failures);
 
     const bugReport = bugReportSchema.parse({
       title: input.title,
-      severity: input.severity ?? 'medium',
+      severity: input.severity ?? triageDefaults.severity,
+      priority: input.priority ?? triageDefaults.priority,
+      reproducibility: input.reproducibility ?? triageDefaults.reproducibility,
+      component: input.component ?? triageDefaults.component,
       steps: input.steps,
       expected: expectedSummary,
       actual: actualSummary,
       environment,
+      browser: {
+        name: 'Stagehand',
+        userAgent: environment.userAgent,
+      },
+      device: {
+        type: environment.viewport?.width ? (environment.viewport.width < 768 ? 'mobile' : 'desktop') : undefined,
+        os: environment.os,
+        viewport: environment.viewport,
+      },
       timestamps: {
         observedAt,
         reportedAt: new Date().toISOString(),
