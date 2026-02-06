@@ -21,6 +21,7 @@ export const qaRunTool = createTool({
     endedAt: z.string(),
     testCaseResults: z.array(z.any()),
     evidence: z.array(z.any()),
+    evidenceRefs: z.array(z.string()),
   }),
   execute: async input => {
     return await runTestSuite({

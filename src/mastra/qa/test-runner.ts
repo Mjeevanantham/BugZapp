@@ -43,6 +43,7 @@ export type TestRunSummary = {
   endedAt: string;
   testCaseResults: TestCaseResult[];
   evidence: EvidenceRecord[];
+  evidenceRefs: string[];
 };
 
 export type TestSuite = {
@@ -95,6 +96,7 @@ export const runTestSuite = async ({
     endedAt: endedAt.toISOString(),
     testCaseResults,
     evidence,
+    evidenceRefs: collectEvidenceRefsFromEvidence(evidence),
   };
 };
 
@@ -251,4 +253,10 @@ const aggregateStatus = (statuses: StepStatus[]): StepStatus => {
   }
 
   return 'pass';
+};
+
+const collectEvidenceRefsFromEvidence = (evidence: EvidenceRecord[]) => {
+  const refs = new Set<string>();
+  evidence.forEach(record => refs.add(record.ref));
+  return Array.from(refs);
 };
