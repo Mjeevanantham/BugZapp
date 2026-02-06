@@ -5,6 +5,7 @@ import { bugReportSchema } from '../qa/bug-report';
 import { captureEvidence, createEvidenceCollector } from '../../lib/evidence-capture';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getDefaultQaStorage } from '../qa/storage';
 
 const assertionResultSchema = z.object({
   passed: z.boolean(),
@@ -26,12 +27,14 @@ export const qaAssertTool = createTool({
     expected: z.string().describe('Expected result'),
     actual: z.string().optional().describe('Actual result (optional, captured on failure if omitted)'),
     domSelectors: z.array(z.string()).optional().describe('Relevant DOM selectors'),
+    tags: z.array(z.string().min(1)).optional().describe('Tags for metadata and storage'),
   }),
   outputSchema: z.object({
     success: z.boolean(),
     message: z.string(),
     bugReportPath: z.string().optional(),
     evidenceDirectory: z.string().optional(),
+    bugReportId: z.string().optional(),
   }),
   execute: async input => {
     return await performQaAssertion(input);
@@ -47,6 +50,7 @@ const performQaAssertion = async (input: {
   expected: string;
   actual?: string;
   domSelectors?: string[];
+  tags?: string[];
 }) => {
   const stagehand = await sessionManager.ensureStagehand();
   const page = stagehand.page;
@@ -108,6 +112,15 @@ const performQaAssertion = async (input: {
     const reportPath = path.join(directory, 'bug-report.json');
     await fs.writeFile(reportPath, JSON.stringify(bugReport, null, 2), 'utf8');
 
+    const qaStorage = getDefaultQaStorage();
+    const stored = await qaStorage.saveBugReport({
+      report: bugReport,
+      metadata: {
+        tags: input.tags,
+        url: page.url(),
+      },
+    });
+
     collector.detach();
 
     return {
@@ -115,6 +128,7 @@ const performQaAssertion = async (input: {
       message: 'Assertion failed. Bug report captured.',
       bugReportPath: reportPath,
       evidenceDirectory: directory,
+      bugReportId: stored.id,
     };
   } catch (error: any) {
     collector.detach();
