@@ -1,0 +1,73 @@
+{
+  "id": "7808e548-5a08-495c-b2aa-e7694b646e25",
+  "report": {
+    "title": "Meta Description Check",
+    "severity": "minor",
+    "priority": "p2",
+    "reproducibility": "always",
+    "component": "Content",
+    "steps": [
+      "Navigate to https://example.com",
+      "Extract the meta description"
+    ],
+    "expected": "Text of meta[name='description'] equals \"This domain is for use in documentation examples without needing permission. Avoid use in operations.\"",
+    "actual": "Expected text for meta[name='description'] to equal \"This domain is for use in documentation examples without needing permission. Avoid use in operations.\"",
+    "environment": {
+      "name": "production",
+      "url": "https://example.com",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "locale": "en-US",
+      "timezone": "America/Los_Angeles",
+      "browser": "Stagehand",
+      "os": "Linux x86_64"
+    },
+    "browser": {
+      "name": "Stagehand",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+    },
+    "device": {
+      "os": "Linux x86_64"
+    },
+    "timestamps": {
+      "observedAt": "2026-02-09T06:13:45.620Z",
+      "reportedAt": "2026-02-09T06:13:46.984Z"
+    },
+    "urls": [
+      "https://example.com/"
+    ],
+    "evidence": [
+      {
+        "type": "screenshot",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-d8df009b-e32d-4689-b033-e75b747d1502\\screenshot.png",
+        "mimeType": "image/png",
+        "createdAt": "2026-02-09T06:13:44.696Z"
+      },
+      {
+        "type": "html",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-d8df009b-e32d-4689-b033-e75b747d1502\\page.html",
+        "mimeType": "text/html",
+        "createdAt": "2026-02-09T06:13:44.696Z"
+      },
+      {
+        "type": "console-log",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-d8df009b-e32d-4689-b033-e75b747d1502\\console-logs.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:13:44.696Z"
+      },
+      {
+        "type": "network-error",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-d8df009b-e32d-4689-b033-e75b747d1502\\network-errors.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:13:44.696Z"
+      }
+    ]
+  },
+  "metadata": {
+    "tags": [],
+    "url": "https://example.com/",
+    "severity": "minor",
+    "observedAt": "2026-02-09T06:13:45.620Z",
+    "reportedAt": "2026-02-09T06:13:46.984Z"
+  },
+  "createdAt": "2026-02-09T06:13:46.989Z"
+}

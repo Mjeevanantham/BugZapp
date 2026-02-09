@@ -1,0 +1,32 @@
+[
+  {
+    "type": "warning",
+    "text": "The resource https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "location": {
+      "url": "https://aaludra.com/",
+      "lineNumber": 0,
+      "columnNumber": 0
+    },
+    "timestamp": "2026-02-09T07:06:05.962Z"
+  },
+  {
+    "type": "warning",
+    "text": "The resource https://aaludra.com/images/Home/home-hero-banner-des-1.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "location": {
+      "url": "https://aaludra.com/",
+      "lineNumber": 0,
+      "columnNumber": 0
+    },
+    "timestamp": "2026-02-09T07:06:05.962Z"
+  },
+  {
+    "type": "warning",
+    "text": "The resource https://aaludra.com/images/dropdown-arrow.svg was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "location": {
+      "url": "https://aaludra.com/",
+      "lineNumber": 0,
+      "columnNumber": 0
+    },
+    "timestamp": "2026-02-09T07:06:05.962Z"
+  }
+]

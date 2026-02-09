@@ -1,0 +1,70 @@
+{
+  "id": "10467114-68f8-4a31-a281-b6704bafa13e",
+  "report": {
+    "title": "Navigation menu presence check",
+    "severity": "minor",
+    "priority": "p1",
+    "reproducibility": "always",
+    "component": "UI",
+    "steps": [
+      "Navigate to https://example.com",
+      "Check for the presence of the navigation menu."
+    ],
+    "expected": "Selector nav is visible",
+    "actual": "Check if the navigation menu exists.",
+    "environment": {
+      "name": "prod",
+      "url": "https://example.com",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "locale": "en-US",
+      "timezone": "America/Los_Angeles",
+      "browser": "Stagehand"
+    },
+    "browser": {
+      "name": "Stagehand",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+    },
+    "device": {},
+    "timestamps": {
+      "observedAt": "2026-02-09T06:11:55.525Z",
+      "reportedAt": "2026-02-09T06:11:57.519Z"
+    },
+    "urls": [
+      "https://example.com/"
+    ],
+    "evidence": [
+      {
+        "type": "screenshot",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-633c0cf4-89c1-49da-94e6-cca641920be9\\screenshot.png",
+        "mimeType": "image/png",
+        "createdAt": "2026-02-09T06:11:54.728Z"
+      },
+      {
+        "type": "html",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-633c0cf4-89c1-49da-94e6-cca641920be9\\page.html",
+        "mimeType": "text/html",
+        "createdAt": "2026-02-09T06:11:54.728Z"
+      },
+      {
+        "type": "console-log",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-633c0cf4-89c1-49da-94e6-cca641920be9\\console-logs.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:11:54.728Z"
+      },
+      {
+        "type": "network-error",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-633c0cf4-89c1-49da-94e6-cca641920be9\\network-errors.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:11:54.728Z"
+      }
+    ]
+  },
+  "metadata": {
+    "tags": [],
+    "url": "https://example.com/",
+    "severity": "minor",
+    "observedAt": "2026-02-09T06:11:55.525Z",
+    "reportedAt": "2026-02-09T06:11:57.519Z"
+  },
+  "createdAt": "2026-02-09T06:11:57.532Z"
+}

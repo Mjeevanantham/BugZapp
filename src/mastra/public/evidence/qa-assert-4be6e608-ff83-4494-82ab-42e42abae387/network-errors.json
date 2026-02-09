@@ -1,0 +1,68 @@
+[
+  {
+    "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-NN7XZ3FND8&gtm=45je6241v9173890204za20gzb9173875399zd9173875399&_p=1770620690029&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1523399120.1770620595&ul=en-us&sr=800x600&uaa=x86&uab=64&uafvl=Not(A%253ABrand%3B8.0.0.0%7CChromium%3B144.0.7559.110%7CGoogle%2520Chrome%3B144.0.7559.110&uamb=0&uam=&uap=Linux&uapv=x86_64&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAAQ&_s=2&tag_exp=103116026~103200004~104527906~104528501~104684208~104684211~115938465~115938469~116185181~116185182~116988315&sid=1770620595&sct=1&seg=1&dl=https%3A%2F%2Faaludra.com%2F&dt=Aaludra%20Technology%20Solutions%20%7C%20Leading%20IT%20Consulting%20%26%20Digital%20Transformation%20Services&en=user_engagement&_et=52149&tfd=54465",
+    "method": "POST",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:42.817Z"
+  },
+  {
+    "url": "https://aaludra.com/cdn-cgi/rum?",
+    "method": "POST",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:42.817Z"
+  },
+  {
+    "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-NN7XZ3FND8&gtm=45je6241v9173890204z89173875399za20gzb9173875399zd9173875399&_p=1770620743743&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1523399120.1770620595&ul=en-us&sr=800x600&uaa=x86&uab=64&uafvl=Not(A%253ABrand%3B8.0.0.0%7CChromium%3B144.0.7559.110%7CGoogle%2520Chrome%3B144.0.7559.110&uamb=0&uam=&uap=Linux&uapv=x86_64&uaw=0&are=1&frm=0&pscdl=noapi&_eu=AAAAAAQ&_s=1&tag_exp=103116026~103200004~104527906~104528500~104684208~104684211~115938466~115938468~116185181~116185182~116988315&sid=1770620595&sct=1&seg=1&dl=https%3A%2F%2Faaludra.com%2F&dt=Aaludra%20Technology%20Solutions%20%7C%20Leading%20IT%20Consulting%20%26%20Digital%20Transformation%20Services&en=page_view&tfd=6641",
+    "method": "POST",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.990Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-1.sxaqXUZF.webp&w=400&h=178&q=90",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.991Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-6.DEbzOZ6W.webp&w=400&h=178&q=80",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.992Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-3.7oeeftZ8.webp&w=400&h=178&q=80",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.992Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-4.D6RqQxf_.webp&w=400&h=178&q=80",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.993Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-2.Dkcs_jVQ.webp&w=400&h=178&q=90",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.994Z"
+  },
+  {
+    "url": "https://aaludra.com/_image?href=%2F_astro%2Fhome-hero-banner-des-5.DbqcsH5w.webp&w=400&h=178&q=80",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.995Z"
+  },
+  {
+    "url": "https://aaludra.com/_astro/proven-mob.CQLu35Zz.webp",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.997Z"
+  },
+  {
+    "url": "https://aaludra.com/_astro/seamless-mob.DLxk8sIM.webp",
+    "method": "GET",
+    "failure": "net::ERR_ABORTED",
+    "timestamp": "2026-02-09T07:05:49.998Z"
+  }
+]

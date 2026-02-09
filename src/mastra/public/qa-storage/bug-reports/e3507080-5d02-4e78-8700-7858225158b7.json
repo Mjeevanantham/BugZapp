@@ -1,0 +1,71 @@
+{
+  "id": "e3507080-5d02-4e78-8700-7858225158b7",
+  "report": {
+    "title": "Main Heading H1 Check",
+    "severity": "major",
+    "priority": "p1",
+    "reproducibility": "always",
+    "component": "Content",
+    "steps": [
+      "Navigate to https://aaludra.com",
+      "Find the main H1 heading"
+    ],
+    "expected": "Page should have a main H1 heading",
+    "actual": "Check if H1 heading exists and is visible",
+    "environment": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "locale": "en-US",
+      "timezone": "America/Los_Angeles",
+      "browser": "Stagehand",
+      "os": "Linux x86_64"
+    },
+    "browser": {
+      "name": "Stagehand",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+    },
+    "device": {
+      "os": "Linux x86_64"
+    },
+    "timestamps": {
+      "observedAt": "2026-02-09T07:03:29.172Z",
+      "reportedAt": "2026-02-09T07:03:30.626Z"
+    },
+    "urls": [
+      "https://aaludra.com/"
+    ],
+    "evidence": [
+      {
+        "type": "screenshot",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6ae86ef0-dcb7-44b1-9fc6-0cdddbc1174e\\screenshot.png",
+        "mimeType": "image/png",
+        "createdAt": "2026-02-09T07:03:22.792Z"
+      },
+      {
+        "type": "html",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6ae86ef0-dcb7-44b1-9fc6-0cdddbc1174e\\page.html",
+        "mimeType": "text/html",
+        "createdAt": "2026-02-09T07:03:22.792Z"
+      },
+      {
+        "type": "console-log",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6ae86ef0-dcb7-44b1-9fc6-0cdddbc1174e\\console-logs.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T07:03:22.792Z"
+      },
+      {
+        "type": "network-error",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6ae86ef0-dcb7-44b1-9fc6-0cdddbc1174e\\network-errors.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T07:03:22.792Z"
+      }
+    ]
+  },
+  "metadata": {
+    "tags": [],
+    "url": "https://aaludra.com/",
+    "severity": "major",
+    "observedAt": "2026-02-09T07:03:29.172Z",
+    "reportedAt": "2026-02-09T07:03:30.626Z"
+  },
+  "createdAt": "2026-02-09T07:03:30.629Z"
+}

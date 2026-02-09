@@ -1,0 +1,75 @@
+{
+  "id": "aa2ea7a5-b273-4336-bf01-48811be795ec",
+  "report": {
+    "title": "Homepage Title Verification",
+    "severity": "critical",
+    "priority": "p0",
+    "reproducibility": "always",
+    "component": "UI",
+    "steps": [
+      "Navigate to https://jeevanantham.site",
+      "Check the page title"
+    ],
+    "expected": "Selector title is visible; Text of title equals \"\"; Text of title equals \"Jeevanantham\"",
+    "actual": "Check if the page title exists.; Check if the page title is not empty.; Check if the page title contains 'Jeevanantham' (case-insensitive).",
+    "environment": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "locale": "en-US",
+      "timezone": "America/Los_Angeles",
+      "browser": "Stagehand",
+      "os": "Linux x86_64"
+    },
+    "browser": {
+      "name": "Stagehand",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+    },
+    "device": {
+      "os": "Linux x86_64"
+    },
+    "timestamps": {
+      "observedAt": "2026-02-09T06:58:11.416Z",
+      "reportedAt": "2026-02-09T06:58:12.912Z"
+    },
+    "urls": [
+      "https://www.jeevanantham.site/"
+    ],
+    "evidence": [
+      {
+        "type": "screenshot",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6784c822-adf3-49a9-bd9c-7a304043f0ae\\screenshot.png",
+        "mimeType": "image/png",
+        "createdAt": "2026-02-09T06:58:07.666Z"
+      },
+      {
+        "type": "html",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6784c822-adf3-49a9-bd9c-7a304043f0ae\\page.html",
+        "mimeType": "text/html",
+        "createdAt": "2026-02-09T06:58:07.666Z"
+      },
+      {
+        "type": "console-log",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6784c822-adf3-49a9-bd9c-7a304043f0ae\\console-logs.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:58:07.666Z"
+      },
+      {
+        "type": "network-error",
+        "path": "D:\\Main\\Dev\\BugZapp\\src\\mastra\\public\\evidence\\qa-assert-6784c822-adf3-49a9-bd9c-7a304043f0ae\\network-errors.json",
+        "mimeType": "application/json",
+        "createdAt": "2026-02-09T06:58:07.666Z"
+      }
+    ]
+  },
+  "metadata": {
+    "tags": [
+      "QA",
+      "Homepage",
+      "Title"
+    ],
+    "url": "https://www.jeevanantham.site/",
+    "severity": "critical",
+    "observedAt": "2026-02-09T06:58:11.416Z",
+    "reportedAt": "2026-02-09T06:58:12.912Z"
+  },
+  "createdAt": "2026-02-09T06:58:12.916Z"
+}

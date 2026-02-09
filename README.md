@@ -173,6 +173,18 @@ User Query → Mastra Agent → Stagehand Tools → Browser Interaction → Evid
 
 The project can be configured through the `.env` file and by modifying the agent instructions in `src/mastra/agents/qa-agent.ts`.
 
+## Documentation
+
+Comprehensive documentation is available in the [`/docs`](docs/) directory:
+
+- **[Getting Started](docs/guides/HOW_TO_TEST.md)** - Quick start guide
+- **[Testing Guide](docs/guides/TESTING_GUIDE.md)** - Complete testing workflow
+- **[Test Commands](docs/testing/TEST_COMMANDS.md)** - Available commands reference
+- **[Architecture](docs/architecture/)** - System design and concepts
+- **[Test Reports](docs/reports/)** - Latest test execution reports
+
+For a complete documentation index, see **[docs/README.md](docs/README.md)**.
+
 ## Credits
 
 This project is built with:
