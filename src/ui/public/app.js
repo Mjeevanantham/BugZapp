@@ -1,5 +1,8 @@
 const statusFilter = document.getElementById('statusFilter');
 const severityFilter = document.getElementById('severityFilter');
+const submissionForm = document.getElementById('submissionForm');
+const submissionUrl = document.getElementById('submissionUrl');
+const submissionList = document.getElementById('submissionList');
 const runList = document.getElementById('runList');
 const bugList = document.getElementById('bugList');
 const detailPane = document.getElementById('detailPane');
@@ -7,10 +10,23 @@ const detailPane = document.getElementById('detailPane');
 const state = {
   runs: [],
   bugs: [],
+  submissions: [],
 };
 
 const fetchJson = async url => {
   const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+  return response.json();
+};
+
+const postJson = async (url, payload) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
   if (!response.ok) {
     throw new Error(`Request failed: ${response.status}`);
   }
@@ -43,6 +59,34 @@ const loadBugs = async () => {
   const query = severity ? `?severity=${encodeURIComponent(severity)}` : '';
   state.bugs = await fetchJson(`/api/bug-reports${query}`);
   renderBugList();
+};
+
+const loadSubmissions = async () => {
+  state.submissions = await fetchJson('/api/submissions');
+  renderSubmissionList();
+};
+
+const renderSubmissionList = () => {
+  submissionList.innerHTML = '';
+  if (state.submissions.length === 0) {
+    submissionList.innerHTML = '<div class="note">No submissions yet.</div>';
+    return;
+  }
+
+  state.submissions.forEach(submission => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${submission.url}</h3>
+      <div class="meta">
+        <span>${formatDate(submission.createdAt)}</span>
+        <span>${submission.runStatus ?? 'Pending run'}</span>
+      </div>
+    `;
+    card.querySelector('.meta').appendChild(renderBadge(submission.status, 'status'));
+    card.addEventListener('click', () => renderSubmissionDetail(submission));
+    submissionList.appendChild(card);
+  });
 };
 
 const renderRunList = () => {
@@ -264,6 +308,66 @@ const renderBugDetail = bug => {
   detailPane.appendChild(wrapper);
 };
 
+const renderSubmissionDetail = submission => {
+  detailPane.innerHTML = '';
+  const wrapper = document.createElement('div');
+
+  const header = document.createElement('div');
+  header.className = 'section';
+  header.innerHTML = `
+    <h2>Submission</h2>
+    <div class="key-value">
+      <strong>URL</strong><span>${submission.url}</span>
+      <strong>Status</strong><span>${submission.status}</span>
+      <strong>Created</strong><span>${formatDate(submission.createdAt)}</span>
+      <strong>Updated</strong><span>${formatDate(submission.updatedAt)}</span>
+      <strong>Run Status</strong><span>${submission.runStatus ?? 'Pending'}</span>
+    </div>
+  `;
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+  if (submission.runId) {
+    const link = document.createElement('a');
+    link.className = 'button primary';
+    link.href = '#';
+    link.textContent = 'View run details';
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const run = state.runs.find(item => item.id === submission.runId);
+      if (run) {
+        renderRunDetail(run);
+      }
+    });
+    actions.appendChild(link);
+  }
+
+  if (submission.status === 'failed') {
+    const retryButton = document.createElement('button');
+    retryButton.className = 'button';
+    retryButton.textContent = 'Retry submission';
+    retryButton.addEventListener('click', async () => {
+      await postJson(`/api/submissions/${submission.id}/retry`, {});
+      await loadSubmissions();
+    });
+    actions.appendChild(retryButton);
+  }
+
+  if (actions.children.length > 0) {
+    header.appendChild(actions);
+  }
+
+  wrapper.appendChild(header);
+
+  if (submission.error) {
+    const errorBlock = document.createElement('pre');
+    errorBlock.className = 'code-block';
+    errorBlock.textContent = submission.error;
+    wrapper.appendChild(errorBlock);
+  }
+  detailPane.appendChild(wrapper);
+};
+
 const renderEvidenceList = evidenceRecords => {
   if (!evidenceRecords || evidenceRecords.length === 0) {
     return buildNote('No evidence captured for this run.');
@@ -422,8 +526,24 @@ severityFilter.addEventListener('change', () => {
   loadBugs().catch(console.error);
 });
 
+submissionForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const urlValue = submissionUrl.value.trim();
+  if (!urlValue) {
+    return;
+  }
+  try {
+    await postJson('/api/submissions', { url: urlValue });
+    submissionUrl.value = '';
+    await loadSubmissions();
+  } catch (error) {
+    console.error(error);
+    alert('Failed to queue submission. Please check the URL and try again.');
+  }
+});
+
 const init = () => {
-  Promise.all([loadRuns(), loadBugs()]).catch(console.error);
+  Promise.all([loadRuns(), loadBugs(), loadSubmissions()]).catch(console.error);
 };
 
 init();

@@ -6,18 +6,23 @@ import { fileURLToPath } from 'node:url';
 import { getDefaultQaStorage } from '../mastra/qa/storage';
 import { renderJUnitReport } from '../mastra/qa/reporting/junit-writer';
 import type { BugReportRecord, TestRunRecord } from '../mastra/qa/storage/storage';
+import { SubmissionQueue } from './submissions';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicDir = path.join(__dirname, 'public');
 const storage = getDefaultQaStorage();
+const submissionQueue = new SubmissionQueue({ qaStorage: storage });
+submissionQueue.initialize().catch(error => {
+  console.error('Failed to initialize submission queue:', error);
+});
 
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', 'http://localhost');
 
     if (url.pathname.startsWith('/api/')) {
-      await handleApiRequest(url, res);
+      await handleApiRequest(req, url, res);
       return;
     }
 
@@ -29,7 +34,7 @@ const server = createServer(async (req, res) => {
   }
 });
 
-const handleApiRequest = async (url: URL, res: ServerResponse) => {
+const handleApiRequest = async (req: import('node:http').IncomingMessage, url: URL, res: ServerResponse) => {
   if (url.pathname === '/api/test-runs') {
     const status = url.searchParams.get('status');
     const records = await storage.searchTestRuns();
@@ -112,6 +117,60 @@ const handleApiRequest = async (url: URL, res: ServerResponse) => {
     return;
   }
 
+  if (url.pathname === '/api/submissions') {
+    if (req.method === 'GET') {
+      respondJson(res, submissionQueue.list());
+      return;
+    }
+
+    if (req.method === 'POST') {
+      let payload: Record<string, unknown> | undefined;
+      try {
+        payload = await parseJsonBody(req);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Invalid request payload.';
+        respondBadRequest(res, message);
+        return;
+      }
+      const urlValue = typeof payload?.url === 'string' ? payload.url.trim() : '';
+      if (!urlValue) {
+        respondBadRequest(res, 'Missing url.');
+        return;
+      }
+
+      if (!isValidHttpUrl(urlValue)) {
+        respondBadRequest(res, 'URL must start with http:// or https://');
+        return;
+      }
+
+      const created = await submissionQueue.create(urlValue);
+      respondJson(res, created);
+      return;
+    }
+  }
+
+  if (url.pathname.startsWith('/api/submissions/')) {
+    const [, , , id, action] = url.pathname.split('/');
+    const record = submissionQueue.get(id);
+    if (!record) {
+      respondNotFound(res);
+      return;
+    }
+
+    if (action === 'retry' && req.method === 'POST') {
+      const updated = await submissionQueue.retry(id);
+      if (!updated) {
+        respondNotFound(res);
+        return;
+      }
+      respondJson(res, updated);
+      return;
+    }
+
+    respondJson(res, record);
+    return;
+  }
+
   respondNotFound(res);
 };
 
@@ -131,6 +190,35 @@ const handleStaticRequest = async (pathname: string, res: ServerResponse) => {
       return;
     }
     throw error;
+  }
+};
+
+const readRequestBody = async (req: import('node:http').IncomingMessage) => {
+  const chunks: Buffer[] = [];
+  for await (const chunk of req) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks).toString('utf8');
+};
+
+const parseJsonBody = async (req: import('node:http').IncomingMessage) => {
+  const body = await readRequestBody(req);
+  if (!body) {
+    return undefined;
+  }
+  try {
+    return JSON.parse(body) as Record<string, unknown>;
+  } catch (error) {
+    throw new Error('Invalid JSON payload.');
+  }
+};
+
+const isValidHttpUrl = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
   }
 };
 
