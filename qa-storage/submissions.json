@@ -1,0 +1,51 @@
+{
+  "submissions": [
+    {
+      "id": "c29b76cf-b7a4-4589-a4b0-0fabcc418ae6",
+      "url": "https://www.thejands.in",
+      "status": "running",
+      "createdAt": "2026-02-09T11:36:00.978Z",
+      "updatedAt": "2026-02-09T11:36:10.031Z",
+      "targets": [
+        "https://www.thejands.in",
+        "https://www.thejands.in/_next/static/css/7b7f0770e051cfd5.css",
+        "https://www.thejands.in/_next/static/chunks/webpack-697321e2cc7c324b.js",
+        "https://www.thejands.in/favicon.ico",
+        "https://www.thejands.in/favicon.svg",
+        "https://www.thejands.in/services",
+        "https://www.thejands.in/cdn-cgi/l/email-protection",
+        "https://www.thejands.in/privacy",
+        "https://www.thejands.in/terms"
+      ],
+      "discovery": {
+        "source": "crawl",
+        "seedUrl": "https://www.thejands.in"
+      }
+    },
+    {
+      "id": "9f330980-67e7-452a-87df-acce1dbf23d4",
+      "url": "https://skaitrust.org/",
+      "status": "completed",
+      "createdAt": "2026-02-09T11:28:58.037Z",
+      "updatedAt": "2026-02-09T11:32:13.472Z",
+      "targets": [
+        "https://skaitrust.org",
+        "https://skaitrust.org/_astro/about.DV-mxz4u.css",
+        "https://skaitrust.org/about",
+        "https://skaitrust.org/services",
+        "https://skaitrust.org/campaigns",
+        "https://skaitrust.org/highlights",
+        "https://skaitrust.org/contact",
+        "https://skaitrust.org/donate",
+        "https://skaitrust.org/terms",
+        "https://skaitrust.org/privacy"
+      ],
+      "discovery": {
+        "source": "crawl",
+        "seedUrl": "https://skaitrust.org/"
+      },
+      "runId": "c65414b5-86a1-47d8-9444-40d357b1b041",
+      "runStatus": "pass"
+    }
+  ]
+}

@@ -128,33 +128,7 @@ const renderSummaryStats = () => {
   `;
 };
 
-const loadSubmissions = async () => {
-  state.submissions = await fetchJson('/api/submissions');
-  renderSubmissionList();
-};
 
-const renderSubmissionList = () => {
-  submissionList.innerHTML = '';
-  if (state.submissions.length === 0) {
-    submissionList.innerHTML = '<div class="note">No submissions yet.</div>';
-    return;
-  }
-
-  state.submissions.forEach(submission => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${submission.url}</h3>
-      <div class="meta">
-        <span>${formatDate(submission.createdAt)}</span>
-        <span>${submission.runStatus ?? 'Pending run'}</span>
-      </div>
-    `;
-    card.querySelector('.meta').appendChild(renderBadge(submission.status, 'status'));
-    card.addEventListener('click', () => renderSubmissionDetail(submission));
-    submissionList.appendChild(card);
-  });
-};
 
 const renderRunList = () => {
   runList.innerHTML = '';
@@ -219,11 +193,10 @@ const renderRunDetail = run => {
       <strong>Started</strong><span>${formatDate(run.summary.startedAt)}</span>
       <strong>Ended</strong><span>${formatDate(run.summary.endedAt)}</span>
       <strong>Duration</strong><span>${Math.round(run.summary.durationMs / 1000)}s</span>
-      <strong>Browserbase</strong><span>${
-        run.metadata?.browserbaseSessionUrl
-          ? `<a href="${run.metadata.browserbaseSessionUrl}" target="_blank">View session</a>`
-          : 'Not available'
-      }</span>
+      <strong>Browserbase</strong><span>${run.metadata?.browserbaseSessionUrl
+      ? `<a href="${run.metadata.browserbaseSessionUrl}" target="_blank">View session</a>`
+      : 'Not available'
+    }</span>
     </div>
     <div class="actions">
       <a class="button primary" href="/api/test-runs/${run.id}/export?format=json">Export JSON</a>
@@ -390,9 +363,8 @@ const renderBugDetail = bug => {
       <strong>Model</strong><span>${bug.report.device?.model ?? 'N/A'}</span>
       <strong>OS</strong><span>${bug.report.device?.os ?? 'N/A'}</span>
       <strong>OS Version</strong><span>${bug.report.device?.osVersion ?? 'N/A'}</span>
-      <strong>Viewport</strong><span>${
-        bug.report.device?.viewport ? `${bug.report.device.viewport.width}x${bug.report.device.viewport.height}` : 'N/A'
-      }</span>
+      <strong>Viewport</strong><span>${bug.report.device?.viewport ? `${bug.report.device.viewport.width}x${bug.report.device.viewport.height}` : 'N/A'
+    }</span>
     </div>
   `;
 
@@ -679,8 +651,8 @@ submissionForm.addEventListener('submit', async event => {
   }
 });
 
-const init = () => {
-  Promise.all([loadRuns(), loadBugs(), loadSubmissions()]).catch(console.error);
+const init = async () => {
+  await Promise.allSettled([loadRuns(), loadBugs(), loadSubmissions()]);
 };
 
 init();

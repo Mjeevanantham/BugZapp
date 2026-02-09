@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "mastra dev",
+    "dev": "concurrently \"mastra dev\" \"pnpm run dev:ui\"",
+    "dev:ui": "tsx src/ui/server.ts",
     "build": "mastra build",
     "start": "mastra start"
   },
@@ -17,18 +18,20 @@
     "node": ">=22.13.0"
   },
   "dependencies": {
+    "@browserbasehq/stagehand": "^2.5.6",
     "@mastra/core": "latest",
     "@mastra/libsql": "latest",
     "@mastra/loggers": "latest",
     "@mastra/memory": "latest",
     "@mastra/observability": "latest",
-    "@browserbasehq/stagehand": "^2.5.6",
     "zod": "^3.25.67"
   },
   "devDependencies": {
     "@types/node": "^24.10.9",
-    "mastra": "latest",
+    "concurrently": "^9.2.1",
     "dotenv": "^16.6.1",
+    "mastra": "latest",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }

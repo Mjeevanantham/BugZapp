@@ -46,7 +46,7 @@ export class SubmissionQueue {
     records.forEach(record => {
       const normalized =
         record.status === 'running'
-          ? { ...record, status: 'queued', updatedAt: new Date().toISOString() }
+          ? { ...record, status: 'queued' as const, updatedAt: new Date().toISOString() }
           : record;
       this.submissions.set(normalized.id, normalized);
       if (normalized.status === 'queued') {
@@ -141,7 +141,6 @@ export class SubmissionQueue {
       await this.persist();
 
       const testCases = buildSubmissionTestCases(targets);
-      const testCases = buildSubmissionTestCases(running.url);
       await runTestSuite({
         testCases,
         metadata: {
@@ -204,10 +203,6 @@ const buildSubmissionTestCases = (targets: string[]): TestCase[] =>
   targets.map((url, index) => ({
     id: `submission-smoke-${index + 1}`,
     description: `Run a navigation and content smoke test for ${url}.`,
-const buildSubmissionTestCases = (url: string): TestCase[] => [
-  {
-    id: 'submission-smoke',
-    description: 'Run a basic navigation and content smoke test.',
     preconditions: ['A valid URL is provided.'],
     steps: [
       {
@@ -237,8 +232,6 @@ const buildSubmissionTestCases = (url: string): TestCase[] => [
     tags: ['submission', 'smoke'],
     priority: 'high',
   }));
-  },
-];
 
 const findSubmissionRun = async (qaStorage: QaStorage, submissionId: string): Promise<TestRunRecord | undefined> => {
   const records = await qaStorage.searchTestRuns({ tags: [`submission:${submissionId}`] });
@@ -262,7 +255,7 @@ const discoverSiteTargets = async (url: string) => {
 const fetchSitemapTargets = async (url: string, maxPages: number) => {
   try {
     const sitemapUrl = new URL('/sitemap.xml', url);
-    const response = await fetch(sitemapUrl);
+    const response = await fetch(sitemapUrl, { signal: AbortSignal.timeout(10000) });
     if (!response.ok) {
       return [];
     }
@@ -299,7 +292,10 @@ const crawlSiteTargets = async (url: string, maxPages: number, maxDepth: number)
     }
 
     try {
-      const response = await fetch(normalized, { headers: { 'User-Agent': 'BugZappCrawler/1.0' } });
+      const response = await fetch(normalized, {
+        headers: { 'User-Agent': 'BugZappCrawler/1.0' },
+        signal: AbortSignal.timeout(10000),
+      });
       if (!response.ok) {
         continue;
       }

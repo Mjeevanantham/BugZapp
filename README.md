@@ -93,7 +93,11 @@ Set the `MODEL` environment variable in your `.env` file to your preferred model
 pnpm run dev
 ```
 
-This starts the Mastra development server and the QA dashboard UI (served from `src/ui`).
+This command concurrently starts:
+1.  **Mastra Studio**: [http://localhost:4111](http://localhost:4111)
+2.  **QA Dashboard UI**: [http://localhost:5050](http://localhost:5050)
+
+> **Note**: If you modify backend files (like `server.ts` or `submissions.ts`), restart this command to apply changes.
 
 ### Running the QA dashboard
 
@@ -180,8 +184,8 @@ Comprehensive documentation is available in the [`/docs`](docs/) directory:
 - **[Getting Started](docs/guides/HOW_TO_TEST.md)** - Quick start guide
 - **[Testing Guide](docs/guides/TESTING_GUIDE.md)** - Complete testing workflow
 - **[Test Commands](docs/testing/TEST_COMMANDS.md)** - Available commands reference
-- **[Architecture](docs/architecture/)** - System design and concepts
-- **[Test Reports](docs/reports/)** - Latest test execution reports
+- **[Architecture](docs/architecture/PROJECT_SCOPE.md)** - System design and concepts
+- **[Current Status](PROJECT_STATUS.md)** - **Latest project readiness status**
 
 For a complete documentation index, see **[docs/README.md](docs/README.md)**.
 

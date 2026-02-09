@@ -1,0 +1,2165 @@
+{
+  "id": "c65414b5-86a1-47d8-9444-40d357b1b041",
+  "summary": {
+    "status": "pass",
+    "durationMs": 194620,
+    "startedAt": "2026-02-09T11:28:58.842Z",
+    "endedAt": "2026-02-09T11:32:13.462Z",
+    "testCaseResults": [
+      {
+        "testCaseId": "submission-smoke-1",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org.",
+        "status": "pass",
+        "durationMs": 33380,
+        "startedAt": "2026-02-09T11:28:58.842Z",
+        "endedAt": "2026-02-09T11:29:32.222Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 21377,
+            "startedAt": "2026-02-09T11:28:58.843Z",
+            "endedAt": "2026-02-09T11:29:20.220Z",
+            "output": {
+              "success": true,
+              "title": "Sri Kolliamman International Trust – Empowering Tribal Communities in Tamil Nadu | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 7310,
+            "startedAt": "2026-02-09T11:29:20.220Z",
+            "endedAt": "2026-02-09T11:29:27.530Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button Donate Now",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/a[1]"
+              },
+              {
+                "description": "Main call-to-action button Learn More",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/a[2]"
+              },
+              {
+                "description": "Main call-to-action button Discover Our Journey",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[2]/div[1]/a[1]"
+              },
+              {
+                "description": "Main call-to-action button Explore Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/div[1]/div[1]/div[1]/a[1]"
+              },
+              {
+                "description": "Main call-to-action button See More Initiatives",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/div[1]/div[2]/div[1]/a[1]"
+              },
+              {
+                "description": "Main call-to-action button Donate Now in donation section",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[6]/div[1]/div[2]/div[1]/a[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 4692,
+            "startedAt": "2026-02-09T11:29:27.530Z",
+            "endedAt": "2026-02-09T11:29:32.222Z",
+            "output": {
+              "content": "Sri Kolliamman International Trust\nEmpowering tribal families in Tamil Nadu’s Kolli Hills and Yercaud with accessible healthcare, education, and dignity since 2006."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-2",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/_astro/about.DV-mxz4u.css.",
+        "status": "pass",
+        "durationMs": 13971,
+        "startedAt": "2026-02-09T11:29:32.223Z",
+        "endedAt": "2026-02-09T11:29:46.194Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 4696,
+            "startedAt": "2026-02-09T11:29:32.223Z",
+            "endedAt": "2026-02-09T11:29:36.919Z",
+            "output": {
+              "success": true,
+              "title": "",
+              "currentUrl": "https://skaitrust.org/_astro/about.DV-mxz4u.css"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 2941,
+            "startedAt": "2026-02-09T11:29:36.919Z",
+            "endedAt": "2026-02-09T11:29:39.860Z",
+            "output": [],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 6334,
+            "startedAt": "2026-02-09T11:29:39.860Z",
+            "endedAt": "2026-02-09T11:29:46.194Z",
+            "output": {
+              "content": "Main page heading: null\nShort summary of the page content: The provided DOM content primarily consists of CSS styles and layout classes for a webpage, including typography, spacing, colors, and responsive design rules. There is no visible textual content or headings extracted that describe the main topic or summary of the page."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-3",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/about.",
+        "status": "pass",
+        "durationMs": 17129,
+        "startedAt": "2026-02-09T11:29:46.194Z",
+        "endedAt": "2026-02-09T11:30:03.323Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 7447,
+            "startedAt": "2026-02-09T11:29:46.194Z",
+            "endedAt": "2026-02-09T11:29:53.641Z",
+            "output": {
+              "success": true,
+              "title": "About Us | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/about"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 6397,
+            "startedAt": "2026-02-09T11:29:53.641Z",
+            "endedAt": "2026-02-09T11:30:00.038Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate page, main call-to-action button",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button to Donate Now",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[6]/div[1]/a[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 3285,
+            "startedAt": "2026-02-09T11:30:00.038Z",
+            "endedAt": "2026-02-09T11:30:03.323Z",
+            "output": {
+              "content": "About Sri Kolliamman International Trust"
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-4",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/services.",
+        "status": "pass",
+        "durationMs": 19676,
+        "startedAt": "2026-02-09T11:30:03.323Z",
+        "endedAt": "2026-02-09T11:30:22.999Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 7018,
+            "startedAt": "2026-02-09T11:30:03.323Z",
+            "endedAt": "2026-02-09T11:30:10.341Z",
+            "output": {
+              "success": true,
+              "title": "Services | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/services"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 8007,
+            "startedAt": "2026-02-09T11:30:10.341Z",
+            "endedAt": "2026-02-09T11:30:18.348Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button for Women Empowerment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button for Youth Empowerment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[2]"
+              },
+              {
+                "description": "Main call-to-action button for Children Empowerment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[3]"
+              },
+              {
+                "description": "Main call-to-action button for Education & Scholarship",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[4]"
+              },
+              {
+                "description": "Main call-to-action button for Mobile Medical Unit",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[5]"
+              },
+              {
+                "description": "Main call-to-action button for Screening & Diagnostics",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[6]"
+              },
+              {
+                "description": "Main call-to-action button for Maternal & Child Health",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[7]"
+              },
+              {
+                "description": "Main call-to-action button for Special Medical Camps",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[8]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 4651,
+            "startedAt": "2026-02-09T11:30:18.348Z",
+            "endedAt": "2026-02-09T11:30:22.999Z",
+            "output": {
+              "content": "Our Services\nThrough funding from the National Health Mission, supported by the Tamil Nadu Health System, our SKAI Trust NGO has been running an outreach mobile health programme in Kolli Hills - Namakkal and Yercaud - Salem districts of Tamil Nadu since 2006."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-5",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/campaigns.",
+        "status": "pass",
+        "durationMs": 18207,
+        "startedAt": "2026-02-09T11:30:22.999Z",
+        "endedAt": "2026-02-09T11:30:41.206Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 6846,
+            "startedAt": "2026-02-09T11:30:22.999Z",
+            "endedAt": "2026-02-09T11:30:29.845Z",
+            "output": {
+              "success": true,
+              "title": "Campaigns | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/campaigns"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 6698,
+            "startedAt": "2026-02-09T11:30:29.846Z",
+            "endedAt": "2026-02-09T11:30:36.544Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Call-to-action link to Contact Us to Collaborate",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/div[2]/a[1]"
+              },
+              {
+                "description": "Call-to-action link to Get in Touch for Future Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/a[1]"
+              },
+              {
+                "description": "Call-to-action link to Contact Our Team",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[3]/div[1]/a[1]"
+              },
+              {
+                "description": "Call-to-action link to Donate Now",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/a[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 4662,
+            "startedAt": "2026-02-09T11:30:36.544Z",
+            "endedAt": "2026-02-09T11:30:41.206Z",
+            "output": {
+              "content": "Our Campaigns & Community Programs\nOver the years, SKAI Trust has launched powerful awareness campaigns and outreach programs that educate, inspire, and empower tribal and rural communities. Our work continues in the field every day. You can explore our past programs below and get in touch to collaborate or volunteer with us on upcoming initiatives."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-6",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/highlights.",
+        "status": "pass",
+        "durationMs": 21326,
+        "startedAt": "2026-02-09T11:30:41.207Z",
+        "endedAt": "2026-02-09T11:31:02.533Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 8697,
+            "startedAt": "2026-02-09T11:30:41.207Z",
+            "endedAt": "2026-02-09T11:30:49.904Z",
+            "output": {
+              "success": true,
+              "title": "Highlights | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/highlights"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 7170,
+            "startedAt": "2026-02-09T11:30:49.904Z",
+            "endedAt": "2026-02-09T11:30:57.074Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate page (main call-to-action)",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button to Subscribe for updates",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 5459,
+            "startedAt": "2026-02-09T11:30:57.074Z",
+            "endedAt": "2026-02-09T11:31:02.533Z",
+            "output": {
+              "content": "Main page heading: Highlights Gallery\n\nShort summary: The page showcases various community welfare and health initiatives by SKAI Trust, including medical camps, blanket drives, awareness programs, and distribution of essentials in tribal and rural areas of Tamil Nadu such as Kolli Hills, Yercaud, and Namakkal District. The initiatives focus on promoting wellness, preventive care, and support for tribal communities through free health checkups, awareness campaigns, and distribution of food, fruits, and stationery to school children."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-7",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/contact.",
+        "status": "pass",
+        "durationMs": 15604,
+        "startedAt": "2026-02-09T11:31:02.533Z",
+        "endedAt": "2026-02-09T11:31:18.137Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 5425,
+            "startedAt": "2026-02-09T11:31:02.533Z",
+            "endedAt": "2026-02-09T11:31:07.958Z",
+            "output": {
+              "success": true,
+              "title": "Contact Us | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/contact"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 6794,
+            "startedAt": "2026-02-09T11:31:07.958Z",
+            "endedAt": "2026-02-09T11:31:14.752Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button to Send Message",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/form[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button to Subscribe",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button to Accept cookies",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button to Decline cookies",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/button[2]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 3385,
+            "startedAt": "2026-02-09T11:31:14.752Z",
+            "endedAt": "2026-02-09T11:31:18.137Z",
+            "output": {
+              "content": "Main page heading: Get in Touch\nSummary: We’d love to connect with you! Reach out for collaboration, volunteering, or to support our programs."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-8",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/donate.",
+        "status": "pass",
+        "durationMs": 19659,
+        "startedAt": "2026-02-09T11:31:18.137Z",
+        "endedAt": "2026-02-09T11:31:37.796Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 7007,
+            "startedAt": "2026-02-09T11:31:18.137Z",
+            "endedAt": "2026-02-09T11:31:25.144Z",
+            "output": {
+              "success": true,
+              "title": "Donate - Support Our Mission | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/donate"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 9141,
+            "startedAt": "2026-02-09T11:31:25.144Z",
+            "endedAt": "2026-02-09T11:31:34.285Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button for Domestic (India) UPI, Cards, Google Pay payment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button for International Cards, Multiple Currencies payment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[1]/button[2]"
+              },
+              {
+                "description": "Main call-to-action button for ₹500 Basic Support donation amount",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button for ₹1,000 Standard Support donation amount",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[2]"
+              },
+              {
+                "description": "Main call-to-action button for ₹2,500 Premium Support donation amount",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[3]"
+              },
+              {
+                "description": "Main call-to-action button for ₹5,000 Major Support donation amount",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[4]"
+              },
+              {
+                "description": "Main call-to-action button to Set custom donation amount",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button to Copy UPI ID for payment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button for Google Pay Quick & Secure payment",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/button[1]"
+              },
+              {
+                "description": "Main call-to-action button for Stripe Card Payment (Visa, Mastercard, RuPay)",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/button[2]"
+              },
+              {
+                "description": "Main call-to-action button to Subscribe for Updates",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 3511,
+            "startedAt": "2026-02-09T11:31:34.285Z",
+            "endedAt": "2026-02-09T11:31:37.796Z",
+            "output": {
+              "content": "Make a Difference Today\nYour contribution enables us to provide life-saving medical services, awareness campaigns, and essential medicines to underserved communities.\nEvery donation counts!"
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-9",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/terms.",
+        "status": "pass",
+        "durationMs": 19042,
+        "startedAt": "2026-02-09T11:31:37.796Z",
+        "endedAt": "2026-02-09T11:31:56.838Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 6499,
+            "startedAt": "2026-02-09T11:31:37.796Z",
+            "endedAt": "2026-02-09T11:31:44.295Z",
+            "output": {
+              "success": true,
+              "title": "Terms of Service | SRI KOLLIAMMAN INTERNATIONAL TRUST | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/terms"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 5015,
+            "startedAt": "2026-02-09T11:31:44.295Z",
+            "endedAt": "2026-02-09T11:31:49.310Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button to Subscribe for Updates",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 7528,
+            "startedAt": "2026-02-09T11:31:49.310Z",
+            "endedAt": "2026-02-09T11:31:56.838Z",
+            "output": {
+              "content": "Terms of Service\nEffective Date: September 17, 2025\n\nWelcome to SRI KOLLIAMMAN INTERNATIONAL TRUST (SKAI Trust). These Terms of Service govern your use of our website, mobile medical outreach programs, and any related services. By accessing our site or using our services, you agree to these Terms.\n\nSKAI Trust provides mobile medical services to tribal communities in Kolli Hills (Namakkal) and Yercaud (Salem). Our services include haemoglobinopathy screening, antenatal and postnatal follow-up, medical camps (dental, eye, diabetic, hypertension, general), awareness campaigns (HIV/AIDS, family planning, preventing child marriage, reducing MMR and IMR), and distribution of medicines, vitamins, vaccines, and lab tests.\n\nOur programs are intended primarily for outreach communities in Tamil Nadu. Users must comply with applicable laws when using our services or interacting with this website.\n\nResponsibilities include accurate information provision by users and service delivery by our medical team in line with government and National Health Mission standards.\n\nSKAI Trust does not guarantee outcomes; the website is for awareness and outreach only and should not replace consultation with a licensed medical professional.\n\nTerms may be updated periodically; continued use constitutes acceptance of updates.\n\nContact for questions: skaitrust@gmail.com"
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      },
+      {
+        "testCaseId": "submission-smoke-10",
+        "description": "Run a navigation and content smoke test for https://skaitrust.org/privacy.",
+        "status": "pass",
+        "durationMs": 16624,
+        "startedAt": "2026-02-09T11:31:56.838Z",
+        "endedAt": "2026-02-09T11:32:13.462Z",
+        "steps": [
+          {
+            "stepId": "navigate",
+            "description": "Navigate to the submitted URL.",
+            "tool": "web-navigate",
+            "status": "pass",
+            "durationMs": 6647,
+            "startedAt": "2026-02-09T11:31:56.838Z",
+            "endedAt": "2026-02-09T11:32:03.485Z",
+            "output": {
+              "success": true,
+              "title": "Privacy Policy | SRI KOLLIAMMAN INTERNATIONAL TRUST | SKAI Trust",
+              "currentUrl": "https://skaitrust.org/privacy"
+            },
+            "evidenceRefs": [
+              "step:navigate"
+            ]
+          },
+          {
+            "stepId": "observe-navigation",
+            "description": "Observe primary navigation or key call-to-action elements.",
+            "tool": "web-observe",
+            "status": "pass",
+            "durationMs": 5143,
+            "startedAt": "2026-02-09T11:32:03.485Z",
+            "endedAt": "2026-02-09T11:32:08.628Z",
+            "output": [
+              {
+                "description": "Primary navigation link to Home page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+              },
+              {
+                "description": "Primary navigation link to About page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+              },
+              {
+                "description": "Primary navigation link to Services page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+              },
+              {
+                "description": "Primary navigation link to Campaigns page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+              },
+              {
+                "description": "Primary navigation link to Highlights page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+              },
+              {
+                "description": "Primary navigation link to Contact page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+              },
+              {
+                "description": "Primary navigation link to Donate to SKAI Trust page",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+              },
+              {
+                "description": "Main call-to-action button to Subscribe for updates",
+                "method": "click",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+              },
+              {
+                "description": "an iframe",
+                "method": "not-supported",
+                "arguments": [],
+                "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+              }
+            ],
+            "evidenceRefs": [
+              "step:observe-navigation"
+            ]
+          },
+          {
+            "stepId": "extract-summary",
+            "description": "Extract the main heading and summary content.",
+            "tool": "web-extract",
+            "status": "pass",
+            "durationMs": 4834,
+            "startedAt": "2026-02-09T11:32:08.628Z",
+            "endedAt": "2026-02-09T11:32:13.462Z",
+            "output": {
+              "content": "Privacy Policy\n\nSRI KOLLIAMMAN INTERNATIONAL TRUST (SKAI Trust) is committed to protecting the privacy of individuals, especially the tribal communities served in Kolli Hills and Yercaud. This Privacy Policy outlines how SKAI Trust collects, uses, and safeguards personal and health-related information gathered during outreach medical programs. The information collected includes basic details, health records, and contact details, which are used to provide medical services, organize health awareness campaigns, and comply with reporting standards. Individuals have rights to access, update, or request deletion of their data by contacting SKAI Trust."
+            },
+            "evidenceRefs": [
+              "step:extract-summary"
+            ]
+          }
+        ],
+        "evidenceRefs": [
+          "step:navigate",
+          "step:observe-navigation",
+          "step:extract-summary"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Sri Kolliamman International Trust – Empowering Tribal Communities in Tamil Nadu | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button Donate Now",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/a[1]"
+          },
+          {
+            "description": "Main call-to-action button Learn More",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/a[2]"
+          },
+          {
+            "description": "Main call-to-action button Discover Our Journey",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[2]/div[1]/a[1]"
+          },
+          {
+            "description": "Main call-to-action button Explore Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/div[1]/div[1]/div[1]/a[1]"
+          },
+          {
+            "description": "Main call-to-action button See More Initiatives",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/div[1]/div[2]/div[1]/a[1]"
+          },
+          {
+            "description": "Main call-to-action button Donate Now in donation section",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[6]/div[1]/div[2]/div[1]/a[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Sri Kolliamman International Trust\nEmpowering tribal families in Tamil Nadu’s Kolli Hills and Yercaud with accessible healthcare, education, and dignity since 2006."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "",
+          "currentUrl": "https://skaitrust.org/_astro/about.DV-mxz4u.css"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": []
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Main page heading: null\nShort summary of the page content: The provided DOM content primarily consists of CSS styles and layout classes for a webpage, including typography, spacing, colors, and responsive design rules. There is no visible textual content or headings extracted that describe the main topic or summary of the page."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "About Us | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/about"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate page, main call-to-action button",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button to Donate Now",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[6]/div[1]/a[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "About Sri Kolliamman International Trust"
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Services | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/services"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button for Women Empowerment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button for Youth Empowerment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[2]"
+          },
+          {
+            "description": "Main call-to-action button for Children Empowerment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[3]"
+          },
+          {
+            "description": "Main call-to-action button for Education & Scholarship",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[4]"
+          },
+          {
+            "description": "Main call-to-action button for Mobile Medical Unit",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[5]"
+          },
+          {
+            "description": "Main call-to-action button for Screening & Diagnostics",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[6]"
+          },
+          {
+            "description": "Main call-to-action button for Maternal & Child Health",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[7]"
+          },
+          {
+            "description": "Main call-to-action button for Special Medical Camps",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/div[1]/button[8]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Our Services\nThrough funding from the National Health Mission, supported by the Tamil Nadu Health System, our SKAI Trust NGO has been running an outreach mobile health programme in Kolli Hills - Namakkal and Yercaud - Salem districts of Tamil Nadu since 2006."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Campaigns | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/campaigns"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Call-to-action link to Contact Us to Collaborate",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[1]/div[2]/a[1]"
+          },
+          {
+            "description": "Call-to-action link to Get in Touch for Future Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/a[1]"
+          },
+          {
+            "description": "Call-to-action link to Contact Our Team",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[3]/div[1]/a[1]"
+          },
+          {
+            "description": "Call-to-action link to Donate Now",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[4]/div[1]/a[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Our Campaigns & Community Programs\nOver the years, SKAI Trust has launched powerful awareness campaigns and outreach programs that educate, inspire, and empower tribal and rural communities. Our work continues in the field every day. You can explore our past programs below and get in touch to collaborate or volunteer with us on upcoming initiatives."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Highlights | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/highlights"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate page (main call-to-action)",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button to Subscribe for updates",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Main page heading: Highlights Gallery\n\nShort summary: The page showcases various community welfare and health initiatives by SKAI Trust, including medical camps, blanket drives, awareness programs, and distribution of essentials in tribal and rural areas of Tamil Nadu such as Kolli Hills, Yercaud, and Namakkal District. The initiatives focus on promoting wellness, preventive care, and support for tribal communities through free health checkups, awareness campaigns, and distribution of food, fruits, and stationery to school children."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Contact Us | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/contact"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button to Send Message",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/form[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button to Subscribe",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button to Accept cookies",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button to Decline cookies",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/button[2]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Main page heading: Get in Touch\nSummary: We’d love to connect with you! Reach out for collaboration, volunteering, or to support our programs."
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Donate - Support Our Mission | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/donate"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button for Domestic (India) UPI, Cards, Google Pay payment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button for International Cards, Multiple Currencies payment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[1]/button[2]"
+          },
+          {
+            "description": "Main call-to-action button for ₹500 Basic Support donation amount",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button for ₹1,000 Standard Support donation amount",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[2]"
+          },
+          {
+            "description": "Main call-to-action button for ₹2,500 Premium Support donation amount",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[3]"
+          },
+          {
+            "description": "Main call-to-action button for ₹5,000 Major Support donation amount",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/button[4]"
+          },
+          {
+            "description": "Main call-to-action button to Set custom donation amount",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button to Copy UPI ID for payment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button for Google Pay Quick & Secure payment",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/button[1]"
+          },
+          {
+            "description": "Main call-to-action button for Stripe Card Payment (Visa, Mastercard, RuPay)",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/main[1]/section[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/button[2]"
+          },
+          {
+            "description": "Main call-to-action button to Subscribe for Updates",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Make a Difference Today\nYour contribution enables us to provide life-saving medical services, awareness campaigns, and essential medicines to underserved communities.\nEvery donation counts!"
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Terms of Service | SRI KOLLIAMMAN INTERNATIONAL TRUST | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/terms"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button to Subscribe for Updates",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Terms of Service\nEffective Date: September 17, 2025\n\nWelcome to SRI KOLLIAMMAN INTERNATIONAL TRUST (SKAI Trust). These Terms of Service govern your use of our website, mobile medical outreach programs, and any related services. By accessing our site or using our services, you agree to these Terms.\n\nSKAI Trust provides mobile medical services to tribal communities in Kolli Hills (Namakkal) and Yercaud (Salem). Our services include haemoglobinopathy screening, antenatal and postnatal follow-up, medical camps (dental, eye, diabetic, hypertension, general), awareness campaigns (HIV/AIDS, family planning, preventing child marriage, reducing MMR and IMR), and distribution of medicines, vitamins, vaccines, and lab tests.\n\nOur programs are intended primarily for outreach communities in Tamil Nadu. Users must comply with applicable laws when using our services or interacting with this website.\n\nResponsibilities include accurate information provision by users and service delivery by our medical team in line with government and National Health Mission standards.\n\nSKAI Trust does not guarantee outcomes; the website is for awareness and outreach only and should not replace consultation with a licensed medical professional.\n\nTerms may be updated periodically; continued use constitutes acceptance of updates.\n\nContact for questions: skaitrust@gmail.com"
+        }
+      },
+      {
+        "ref": "step:navigate",
+        "stepId": "navigate",
+        "data": {
+          "success": true,
+          "title": "Privacy Policy | SRI KOLLIAMMAN INTERNATIONAL TRUST | SKAI Trust",
+          "currentUrl": "https://skaitrust.org/privacy"
+        }
+      },
+      {
+        "ref": "step:observe-navigation",
+        "stepId": "observe-navigation",
+        "data": [
+          {
+            "description": "Primary navigation link to Home page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[1]"
+          },
+          {
+            "description": "Primary navigation link to About page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[2]"
+          },
+          {
+            "description": "Primary navigation link to Services page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[3]"
+          },
+          {
+            "description": "Primary navigation link to Campaigns page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[4]"
+          },
+          {
+            "description": "Primary navigation link to Highlights page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[5]"
+          },
+          {
+            "description": "Primary navigation link to Contact page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[6]"
+          },
+          {
+            "description": "Primary navigation link to Donate to SKAI Trust page",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/header[1]/div[1]/nav[1]/a[7]"
+          },
+          {
+            "description": "Main call-to-action button to Subscribe for updates",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[2]/div[1]/form[1]/button[1]"
+          },
+          {
+            "description": "an iframe",
+            "method": "not-supported",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/footer[1]/div[1]/div[4]/div[1]/iframe[1]"
+          }
+        ]
+      },
+      {
+        "ref": "step:extract-summary",
+        "stepId": "extract-summary",
+        "data": {
+          "content": "Privacy Policy\n\nSRI KOLLIAMMAN INTERNATIONAL TRUST (SKAI Trust) is committed to protecting the privacy of individuals, especially the tribal communities served in Kolli Hills and Yercaud. This Privacy Policy outlines how SKAI Trust collects, uses, and safeguards personal and health-related information gathered during outreach medical programs. The information collected includes basic details, health records, and contact details, which are used to provide medical services, organize health awareness campaigns, and comply with reporting standards. Individuals have rights to access, update, or request deletion of their data by contacting SKAI Trust."
+        }
+      }
+    ],
+    "evidenceRefs": [
+      "step:navigate",
+      "step:observe-navigation",
+      "step:extract-summary"
+    ]
+  },
+  "metadata": {
+    "tags": [
+      "submission:9f330980-67e7-452a-87df-acce1dbf23d4"
+    ],
+    "url": "https://skaitrust.org/",
+    "startedAt": "2026-02-09T11:28:58.842Z",
+    "endedAt": "2026-02-09T11:32:13.462Z",
+    "browserbaseSessionId": "dabe47de-cc9e-4cfc-abad-462f23f84f68",
+    "browserbaseSessionUrl": "https://www.browserbase.com/sessions/dabe47de-cc9e-4cfc-abad-462f23f84f68"
+  },
+  "createdAt": "2026-02-09T11:32:13.463Z"
+}
