@@ -141,6 +141,7 @@ export class SubmissionQueue {
       await this.persist();
 
       const testCases = buildSubmissionTestCases(targets);
+      const testCases = buildSubmissionTestCases(running.url);
       await runTestSuite({
         testCases,
         metadata: {
@@ -203,6 +204,10 @@ const buildSubmissionTestCases = (targets: string[]): TestCase[] =>
   targets.map((url, index) => ({
     id: `submission-smoke-${index + 1}`,
     description: `Run a navigation and content smoke test for ${url}.`,
+const buildSubmissionTestCases = (url: string): TestCase[] => [
+  {
+    id: 'submission-smoke',
+    description: 'Run a basic navigation and content smoke test.',
     preconditions: ['A valid URL is provided.'],
     steps: [
       {
@@ -232,6 +237,8 @@ const buildSubmissionTestCases = (targets: string[]): TestCase[] =>
     tags: ['submission', 'smoke'],
     priority: 'high',
   }));
+  },
+];
 
 const findSubmissionRun = async (qaStorage: QaStorage, submissionId: string): Promise<TestRunRecord | undefined> => {
   const records = await qaStorage.searchTestRuns({ tags: [`submission:${submissionId}`] });

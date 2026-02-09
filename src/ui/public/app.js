@@ -128,6 +128,34 @@ const renderSummaryStats = () => {
   `;
 };
 
+const loadSubmissions = async () => {
+  state.submissions = await fetchJson('/api/submissions');
+  renderSubmissionList();
+};
+
+const renderSubmissionList = () => {
+  submissionList.innerHTML = '';
+  if (state.submissions.length === 0) {
+    submissionList.innerHTML = '<div class="note">No submissions yet.</div>';
+    return;
+  }
+
+  state.submissions.forEach(submission => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${submission.url}</h3>
+      <div class="meta">
+        <span>${formatDate(submission.createdAt)}</span>
+        <span>${submission.runStatus ?? 'Pending run'}</span>
+      </div>
+    `;
+    card.querySelector('.meta').appendChild(renderBadge(submission.status, 'status'));
+    card.addEventListener('click', () => renderSubmissionDetail(submission));
+    submissionList.appendChild(card);
+  });
+};
+
 const renderRunList = () => {
   runList.innerHTML = '';
   if (state.runs.length === 0) {
