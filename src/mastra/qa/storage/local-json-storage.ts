@@ -54,6 +54,12 @@ export class LocalJsonQaStorage implements QaStorage {
     return record;
   }
 
+  async updateBugReport(record: BugReportRecord): Promise<BugReportRecord> {
+    await this.ensureDir(this.bugReportDir());
+    await fs.writeFile(this.recordPath(this.bugReportDir(), record.id), JSON.stringify(record, null, 2), 'utf8');
+    return record;
+  }
+
   async searchTestRuns(query?: QaSearchQuery): Promise<TestRunRecord[]> {
     const records = await this.readRecords<TestRunRecord>(this.testRunDir());
     return records.filter(record => matchesQuery(record.metadata, record.createdAt, query));

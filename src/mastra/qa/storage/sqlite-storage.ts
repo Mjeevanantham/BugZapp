@@ -40,8 +40,8 @@ export class SqliteQaStorage implements QaStorage {
     this.db
       .prepare(
         `INSERT INTO test_runs
-        (id, suite_id, suite_description, summary, tags, url, started_at, ended_at, created_at)
-        VALUES ($id, $suiteId, $suiteDescription, $summary, $tags, $url, $startedAt, $endedAt, $createdAt)`,
+        (id, suite_id, suite_description, summary, tags, url, started_at, ended_at, browserbase_session_id, browserbase_session_url, created_at)
+        VALUES ($id, $suiteId, $suiteDescription, $summary, $tags, $url, $startedAt, $endedAt, $browserbaseSessionId, $browserbaseSessionUrl, $createdAt)`,
       )
       .run({
         $id: record.id,
@@ -52,6 +52,8 @@ export class SqliteQaStorage implements QaStorage {
         $url: record.metadata.url ?? null,
         $startedAt: record.metadata.startedAt ?? null,
         $endedAt: record.metadata.endedAt ?? null,
+        $browserbaseSessionId: record.metadata.browserbaseSessionId ?? null,
+        $browserbaseSessionUrl: record.metadata.browserbaseSessionUrl ?? null,
         $createdAt: record.createdAt,
       });
 
@@ -87,6 +89,27 @@ export class SqliteQaStorage implements QaStorage {
     return record;
   }
 
+  async updateBugReport(record: BugReportRecord): Promise<BugReportRecord> {
+    const tags = normalizeTags(record.metadata.tags);
+    this.db
+      .prepare(
+        `UPDATE bug_reports
+        SET report = $report, tags = $tags, url = $url, severity = $severity, observed_at = $observedAt, reported_at = $reportedAt
+        WHERE id = $id`,
+      )
+      .run({
+        $id: record.id,
+        $report: JSON.stringify(record.report),
+        $tags: JSON.stringify(tags),
+        $url: record.metadata.url ?? null,
+        $severity: record.metadata.severity ?? null,
+        $observedAt: record.metadata.observedAt ?? null,
+        $reportedAt: record.metadata.reportedAt ?? null,
+      });
+
+    return record;
+  }
+
   async searchTestRuns(query?: QaSearchQuery): Promise<TestRunRecord[]> {
     const { sql, params } = this.buildTestRunQuery(query);
     const rows = this.db.prepare(sql).all(params) as SqliteTestRunRow[];
@@ -112,6 +135,8 @@ export class SqliteQaStorage implements QaStorage {
         url TEXT,
         started_at TEXT,
         ended_at TEXT,
+        browserbase_session_id TEXT,
+        browserbase_session_url TEXT,
         created_at TEXT NOT NULL
       );
       CREATE TABLE IF NOT EXISTS bug_reports (
@@ -125,6 +150,9 @@ export class SqliteQaStorage implements QaStorage {
         created_at TEXT NOT NULL
       );
     `);
+
+    this.ensureColumn('test_runs', 'browserbase_session_id', 'TEXT');
+    this.ensureColumn('test_runs', 'browserbase_session_url', 'TEXT');
   }
 
   private buildTestRunQuery(query?: QaSearchQuery) {
@@ -205,6 +233,8 @@ export class SqliteQaStorage implements QaStorage {
         url: row.url ?? undefined,
         startedAt: row.started_at ?? undefined,
         endedAt: row.ended_at ?? undefined,
+        browserbaseSessionId: row.browserbase_session_id ?? undefined,
+        browserbaseSessionUrl: row.browserbase_session_url ?? undefined,
       },
       createdAt: row.created_at,
     };
@@ -224,6 +254,18 @@ export class SqliteQaStorage implements QaStorage {
       createdAt: row.created_at,
     };
   }
+
+  private ensureColumn(table: string, column: string, definition: string) {
+    try {
+      const columns = this.db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
+      const hasColumn = columns.some(entry => entry.name === column);
+      if (!hasColumn) {
+        this.db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+      }
+    } catch (error) {
+      console.error(`Failed to ensure column ${column} on ${table}:`, error);
+    }
+  }
 }
 
 type SqliteTestRunRow = {
@@ -235,6 +277,8 @@ type SqliteTestRunRow = {
   url: string | null;
   started_at: string | null;
   ended_at: string | null;
+  browserbase_session_id: string | null;
+  browserbase_session_url: string | null;
   created_at: string;
 };
 
