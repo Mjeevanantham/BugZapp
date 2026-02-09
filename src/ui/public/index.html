@@ -38,6 +38,27 @@
     <main>
       <section class="list-pane">
         <div class="list-section">
+          <h2>Submit a website</h2>
+          <form id="submissionForm" class="submission-form">
+            <input
+              id="submissionUrl"
+              type="url"
+              name="url"
+              placeholder="https://example.com"
+              required
+              autocomplete="url"
+            />
+            <button class="button primary" type="submit">Queue Test</button>
+          </form>
+          <p class="helper-text">
+            Submit a public URL to run a full-site smoke check. Submissions are queued and processed sequentially.
+          </p>
+        </div>
+        <div class="list-section">
+          <h2>Submissions</h2>
+          <div id="submissionList" class="card-list"></div>
+        </div>
+        <div class="list-section">
           <h2>Test Runs</h2>
           <div id="runList" class="card-list"></div>
         </div>
