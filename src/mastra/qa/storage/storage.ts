@@ -10,6 +10,8 @@ export type QaRecordMetadata = {
   endedAt?: string;
   observedAt?: string;
   reportedAt?: string;
+  browserbaseSessionId?: string;
+  browserbaseSessionUrl?: string;
 };
 
 export type QaSearchQuery = {
@@ -51,6 +53,7 @@ export type BugReportRecord = {
 export interface QaStorage {
   saveTestRun(input: TestRunStorageInput): Promise<TestRunRecord>;
   saveBugReport(input: BugReportStorageInput): Promise<BugReportRecord>;
+  updateBugReport(record: BugReportRecord): Promise<BugReportRecord>;
   searchTestRuns(query?: QaSearchQuery): Promise<TestRunRecord[]>;
   searchBugReports(query?: QaSearchQuery): Promise<BugReportRecord[]>;
 }
@@ -63,6 +66,8 @@ export const buildTestRunMetadata = (summary: TestRunSummary, metadata?: QaRecor
   url: metadata?.url,
   startedAt: summary.startedAt,
   endedAt: summary.endedAt,
+  browserbaseSessionId: metadata?.browserbaseSessionId,
+  browserbaseSessionUrl: metadata?.browserbaseSessionUrl,
 });
 
 export const buildBugReportMetadata = (report: BugReport, metadata?: QaRecordMetadata): QaRecordMetadata => ({

@@ -16,6 +16,11 @@ export type SubmissionRecord = {
   runId?: string;
   runStatus?: string;
   error?: string;
+  targets?: string[];
+  discovery?: {
+    source: 'sitemap' | 'crawl';
+    seedUrl: string;
+  };
 };
 
 type SubmissionStore = {
@@ -127,6 +132,15 @@ export class SubmissionQueue {
     await this.persist();
 
     try {
+      const discovery = await discoverSiteTargets(running.url);
+      const targets = discovery.targets.length > 0 ? discovery.targets : [running.url];
+      this.updateRecord(id, {
+        targets,
+        discovery: { source: discovery.source, seedUrl: running.url },
+      });
+      await this.persist();
+
+      const testCases = buildSubmissionTestCases(targets);
       const testCases = buildSubmissionTestCases(running.url);
       await runTestSuite({
         testCases,
@@ -186,6 +200,10 @@ export class SubmissionQueue {
   }
 }
 
+const buildSubmissionTestCases = (targets: string[]): TestCase[] =>
+  targets.map((url, index) => ({
+    id: `submission-smoke-${index + 1}`,
+    description: `Run a navigation and content smoke test for ${url}.`,
 const buildSubmissionTestCases = (url: string): TestCase[] => [
   {
     id: 'submission-smoke',
@@ -218,6 +236,7 @@ const buildSubmissionTestCases = (url: string): TestCase[] => [
     assertions: ['Page should load without fatal errors.', 'Primary content should be present.'],
     tags: ['submission', 'smoke'],
     priority: 'high',
+  }));
   },
 ];
 
@@ -225,3 +244,105 @@ const findSubmissionRun = async (qaStorage: QaStorage, submissionId: string): Pr
   const records = await qaStorage.searchTestRuns({ tags: [`submission:${submissionId}`] });
   return records.sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
 };
+
+const discoverSiteTargets = async (url: string) => {
+  const maxPages = Number.parseInt(process.env.QA_SUBMISSION_MAX_PAGES ?? '10', 10);
+  const maxDepth = Number.parseInt(process.env.QA_SUBMISSION_MAX_DEPTH ?? '2', 10);
+  const normalizedUrl = normalizeUrl(url);
+
+  const sitemapTargets = await fetchSitemapTargets(normalizedUrl, maxPages);
+  if (sitemapTargets.length > 0) {
+    return { source: 'sitemap' as const, targets: sitemapTargets };
+  }
+
+  const crawlTargets = await crawlSiteTargets(normalizedUrl, maxPages, maxDepth);
+  return { source: 'crawl' as const, targets: crawlTargets };
+};
+
+const fetchSitemapTargets = async (url: string, maxPages: number) => {
+  try {
+    const sitemapUrl = new URL('/sitemap.xml', url);
+    const response = await fetch(sitemapUrl);
+    if (!response.ok) {
+      return [];
+    }
+    const xml = await response.text();
+    const locations = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/gi)).map(match => match[1].trim());
+    const origin = new URL(url).origin;
+    const filtered = locations.filter(location => location.startsWith(origin));
+    return dedupeUrls(filtered).slice(0, maxPages);
+  } catch {
+    return [];
+  }
+};
+
+const crawlSiteTargets = async (url: string, maxPages: number, maxDepth: number) => {
+  const origin = new URL(url).origin;
+  const queue: Array<{ url: string; depth: number }> = [{ url, depth: 0 }];
+  const visited = new Set<string>();
+  const results: string[] = [];
+
+  while (queue.length > 0 && results.length < maxPages) {
+    const current = queue.shift();
+    if (!current) {
+      break;
+    }
+    const normalized = normalizeUrl(current.url);
+    if (!normalized || visited.has(normalized)) {
+      continue;
+    }
+    visited.add(normalized);
+    results.push(normalized);
+
+    if (current.depth >= maxDepth) {
+      continue;
+    }
+
+    try {
+      const response = await fetch(normalized, { headers: { 'User-Agent': 'BugZappCrawler/1.0' } });
+      if (!response.ok) {
+        continue;
+      }
+      const html = await response.text();
+      const links = extractLinks(html, normalized)
+        .filter(link => link.startsWith(origin))
+        .filter(link => !visited.has(link));
+      links.forEach(link => queue.push({ url: link, depth: current.depth + 1 }));
+    } catch {
+      continue;
+    }
+  }
+
+  return results.slice(0, maxPages);
+};
+
+const extractLinks = (html: string, baseUrl: string) => {
+  const links: string[] = [];
+  const regex = /href=["']([^"'#]+)["']/gi;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(html)) !== null) {
+    const raw = match[1].trim();
+    if (!raw || raw.startsWith('mailto:') || raw.startsWith('tel:') || raw.startsWith('javascript:')) {
+      continue;
+    }
+    try {
+      const resolved = new URL(raw, baseUrl).toString();
+      links.push(resolved);
+    } catch {
+      continue;
+    }
+  }
+  return links;
+};
+
+const normalizeUrl = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    parsed.hash = '';
+    return parsed.toString().replace(/\/$/, '') || parsed.toString();
+  } catch {
+    return value;
+  }
+};
+
+const dedupeUrls = (urls: string[]) => Array.from(new Set(urls));

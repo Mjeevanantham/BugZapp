@@ -3,6 +3,7 @@ const severityFilter = document.getElementById('severityFilter');
 const submissionForm = document.getElementById('submissionForm');
 const submissionUrl = document.getElementById('submissionUrl');
 const submissionList = document.getElementById('submissionList');
+const summaryStats = document.getElementById('summaryStats');
 const runList = document.getElementById('runList');
 const bugList = document.getElementById('bugList');
 const detailPane = document.getElementById('detailPane');
@@ -52,6 +53,7 @@ const loadRuns = async () => {
   const query = status ? `?status=${encodeURIComponent(status)}` : '';
   state.runs = await fetchJson(`/api/test-runs${query}`);
   renderRunList();
+  renderSummaryStats();
 };
 
 const loadBugs = async () => {
@@ -59,6 +61,71 @@ const loadBugs = async () => {
   const query = severity ? `?severity=${encodeURIComponent(severity)}` : '';
   state.bugs = await fetchJson(`/api/bug-reports${query}`);
   renderBugList();
+  renderSummaryStats();
+};
+
+const loadSubmissions = async () => {
+  state.submissions = await fetchJson('/api/submissions');
+  renderSubmissionList();
+  renderSummaryStats();
+};
+
+const renderSubmissionList = () => {
+  submissionList.innerHTML = '';
+  if (state.submissions.length === 0) {
+    submissionList.innerHTML = '<div class="note">No submissions yet.</div>';
+    return;
+  }
+
+  state.submissions.forEach(submission => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${submission.url}</h3>
+      <div class="meta">
+        <span>${formatDate(submission.createdAt)}</span>
+        <span>${submission.runStatus ?? 'Pending run'}</span>
+        <span>${submission.targets?.length ?? 0} pages</span>
+      </div>
+    `;
+    card.querySelector('.meta').appendChild(renderBadge(submission.status, 'status'));
+    card.addEventListener('click', () => renderSubmissionDetail(submission));
+    submissionList.appendChild(card);
+  });
+};
+
+const renderSummaryStats = () => {
+  if (!summaryStats) {
+    return;
+  }
+
+  const totalRuns = state.runs.length;
+  const passedRuns = state.runs.filter(run => run.summary.status === 'pass').length;
+  const totalBugs = state.bugs.length;
+  const queued = state.submissions.filter(submission => submission.status === 'queued').length;
+  const running = state.submissions.filter(submission => submission.status === 'running').length;
+  const failed = state.submissions.filter(submission => submission.status === 'failed').length;
+  const completed = state.submissions.filter(submission => submission.status === 'completed').length;
+  const passRate = totalRuns > 0 ? Math.round((passedRuns / totalRuns) * 100) : 0;
+
+  summaryStats.innerHTML = `
+    <div class="stat-card">
+      <strong>${totalRuns}</strong>
+      <span>Total runs</span>
+    </div>
+    <div class="stat-card">
+      <strong>${passRate}%</strong>
+      <span>Run pass rate</span>
+    </div>
+    <div class="stat-card">
+      <strong>${totalBugs}</strong>
+      <span>Bug reports</span>
+    </div>
+    <div class="stat-card">
+      <strong>${queued + running + completed + failed}</strong>
+      <span>Submissions</span>
+    </div>
+  `;
 };
 
 const loadSubmissions = async () => {
@@ -152,6 +219,11 @@ const renderRunDetail = run => {
       <strong>Started</strong><span>${formatDate(run.summary.startedAt)}</span>
       <strong>Ended</strong><span>${formatDate(run.summary.endedAt)}</span>
       <strong>Duration</strong><span>${Math.round(run.summary.durationMs / 1000)}s</span>
+      <strong>Browserbase</strong><span>${
+        run.metadata?.browserbaseSessionUrl
+          ? `<a href="${run.metadata.browserbaseSessionUrl}" target="_blank">View session</a>`
+          : 'Not available'
+      }</span>
     </div>
     <div class="actions">
       <a class="button primary" href="/api/test-runs/${run.id}/export?format=json">Export JSON</a>
@@ -273,6 +345,29 @@ const renderBugDetail = bug => {
   evidenceSection.innerHTML = '<h3>Evidence</h3>';
   evidenceSection.appendChild(renderBugEvidence(bug.report.evidence ?? []));
 
+  const publishingSection = document.createElement('div');
+  publishingSection.className = 'section';
+  publishingSection.innerHTML = '<h3>Issue publishing</h3>';
+  publishingSection.appendChild(renderPublishedIssues(bug.report.externalIssues ?? []));
+
+  const publishActions = document.createElement('div');
+  publishActions.className = 'actions';
+  const githubButton = document.createElement('button');
+  githubButton.className = 'button';
+  githubButton.textContent = 'Publish to GitHub';
+  githubButton.addEventListener('click', async () => {
+    await publishIssue(bug.id, 'github');
+  });
+  const jiraButton = document.createElement('button');
+  jiraButton.className = 'button';
+  jiraButton.textContent = 'Publish to Jira';
+  jiraButton.addEventListener('click', async () => {
+    await publishIssue(bug.id, 'jira');
+  });
+  publishActions.appendChild(githubButton);
+  publishActions.appendChild(jiraButton);
+  publishingSection.appendChild(publishActions);
+
   const environmentSection = document.createElement('div');
   environmentSection.className = 'section';
   environmentSection.innerHTML = `
@@ -304,6 +399,7 @@ const renderBugDetail = bug => {
   wrapper.appendChild(header);
   wrapper.appendChild(stepsSection);
   wrapper.appendChild(environmentSection);
+  wrapper.appendChild(publishingSection);
   wrapper.appendChild(evidenceSection);
   detailPane.appendChild(wrapper);
 };
@@ -322,6 +418,8 @@ const renderSubmissionDetail = submission => {
       <strong>Created</strong><span>${formatDate(submission.createdAt)}</span>
       <strong>Updated</strong><span>${formatDate(submission.updatedAt)}</span>
       <strong>Run Status</strong><span>${submission.runStatus ?? 'Pending'}</span>
+      <strong>Discovery</strong><span>${submission.discovery?.source ?? 'Pending'}</span>
+      <strong>Pages</strong><span>${submission.targets?.length ?? 0}</span>
     </div>
   `;
 
@@ -358,6 +456,21 @@ const renderSubmissionDetail = submission => {
   }
 
   wrapper.appendChild(header);
+
+  if (submission.targets?.length) {
+    const targetSection = document.createElement('div');
+    targetSection.className = 'section';
+    targetSection.innerHTML = '<h3>Discovered pages</h3>';
+    const list = document.createElement('ul');
+    list.className = 'target-list';
+    submission.targets.forEach(target => {
+      const item = document.createElement('li');
+      item.innerHTML = `<a href="${target}" target="_blank">${target}</a>`;
+      list.appendChild(item);
+    });
+    targetSection.appendChild(list);
+    wrapper.appendChild(targetSection);
+  }
 
   if (submission.error) {
     const errorBlock = document.createElement('pre');
@@ -405,6 +518,30 @@ const renderEvidenceList = evidenceRecords => {
   });
 
   return grid;
+};
+
+const renderPublishedIssues = issues => {
+  if (!issues || issues.length === 0) {
+    return buildNote('No published issues yet.');
+  }
+  const list = document.createElement('ul');
+  list.className = 'issue-list';
+  issues.forEach(issue => {
+    const item = document.createElement('li');
+    item.innerHTML = `<strong>${issue.provider.toUpperCase()}</strong>: <a href="${issue.url}" target="_blank">${issue.url}</a>`;
+    list.appendChild(item);
+  });
+  return list;
+};
+
+const publishIssue = async (bugId, provider) => {
+  try {
+    await postJson(`/api/bug-reports/${bugId}/publish`, { provider });
+    await loadBugs();
+  } catch (error) {
+    console.error(error);
+    alert('Failed to publish issue. Check configuration and try again.');
+  }
 };
 
 const renderBugEvidence = artifacts => {

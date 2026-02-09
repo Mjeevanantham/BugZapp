@@ -5,6 +5,7 @@ import { pageObserveTool } from '../tools/page-observe-tool';
 import type { TestCase, TestStep, TestStepTool } from './test-case';
 import type { QaStorage } from './storage/storage';
 import { getDefaultQaStorage } from './storage';
+import { sessionManager } from '../../lib/stage-hand';
 
 export type StepStatus = 'pass' | 'fail' | 'blocked';
 
@@ -106,11 +107,17 @@ export const runTestSuite = async ({
   };
 
   const qaStorage = storage ?? getDefaultQaStorage();
+  const sessionInfo = sessionManager.getSessionInfo();
+  const metadataWithSession = {
+    ...metadata,
+    browserbaseSessionId: metadata?.browserbaseSessionId ?? sessionInfo?.sessionId,
+    browserbaseSessionUrl: metadata?.browserbaseSessionUrl ?? sessionInfo?.sessionUrl,
+  };
   await qaStorage.saveTestRun({
     summary,
     suiteId,
     suiteDescription: suite?.description,
-    metadata,
+    metadata: metadataWithSession,
   });
 
   return summary;

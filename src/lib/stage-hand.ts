@@ -6,6 +6,7 @@ class StagehandSessionManager {
   private initialized = false;
   private lastUsed = Date.now();
   private readonly sessionTimeout = 10 * 60 * 1000; // 10 minutes
+  private sessionInfo?: { sessionId: string; sessionUrl: string; debugUrl: string };
 
   private constructor() {
     // Schedule session cleanup to prevent memory leaks
@@ -40,7 +41,12 @@ class StagehandSessionManager {
 
         try {
           console.log('Initializing Stagehand...');
-          await this.stagehand.init();
+          const initResult = await this.stagehand.init();
+          this.sessionInfo = {
+            sessionId: initResult.sessionId,
+            sessionUrl: initResult.sessionUrl,
+            debugUrl: initResult.debugUrl,
+          };
           console.log('Stagehand initialized successfully');
           this.initialized = true;
           return this.stagehand;
@@ -69,7 +75,12 @@ class StagehandSessionManager {
             projectId: process.env.BROWSERBASE_PROJECT_ID!,
             env: 'BROWSERBASE',
           });
-          await this.stagehand.init();
+          const initResult = await this.stagehand.init();
+          this.sessionInfo = {
+            sessionId: initResult.sessionId,
+            sessionUrl: initResult.sessionUrl,
+            debugUrl: initResult.debugUrl,
+          };
           this.initialized = true;
           return this.stagehand;
         }
@@ -78,6 +89,7 @@ class StagehandSessionManager {
     } catch (error) {
       this.initialized = false;
       this.stagehand = null;
+      this.sessionInfo = undefined;
       const errorMsg = error instanceof Error ? error.message : String(error);
       throw new Error(`Failed to initialize/reinitialize Stagehand: ${errorMsg}`);
     }
@@ -99,6 +111,7 @@ class StagehandSessionManager {
       }
       this.stagehand = null;
       this.initialized = false;
+      this.sessionInfo = undefined;
     }
   }
 
@@ -114,7 +127,15 @@ class StagehandSessionManager {
       }
       this.stagehand = null;
       this.initialized = false;
+      this.sessionInfo = undefined;
     }
+  }
+
+  /**
+   * Get the latest Browserbase session info.
+   */
+  public getSessionInfo() {
+    return this.sessionInfo;
   }
 }
 

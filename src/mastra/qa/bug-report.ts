@@ -56,6 +56,17 @@ export const bugReportSchema = z.object({
   urls: z.array(z.string().url()).optional(),
   domSelectors: z.array(z.string().min(1)).optional(),
   evidence: z.array(evidenceArtifactSchema).optional(),
+  externalIssues: z
+    .array(
+      z.object({
+        provider: z.enum(['github', 'jira']),
+        url: z.string().url(),
+        key: z.string().optional(),
+        id: z.string().optional(),
+        createdAt: z.string().datetime(),
+      }),
+    )
+    .optional(),
 });
 
 export type BugReport = z.infer<typeof bugReportSchema>;

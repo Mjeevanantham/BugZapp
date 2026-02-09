@@ -6,6 +6,7 @@ import { pageExtractTool } from '../tools/page-extract-tool';
 import { pageNavigateTool } from '../tools/page-navigate-tool';
 import { qaRunTool } from '../tools/qa-run-tool';
 import { qaAssertTool } from '../tools/qa-assert-tool';
+import { qaPublishIssueTool } from '../tools/qa-publish-issue-tool';
 
 const memory = new Memory();
 
@@ -31,8 +32,9 @@ export const webAgent = new Agent({
       Use the pageExtractTool to extract data from webpages.
       Use the pageNavigateTool to navigate to a URL.
       Use the qaAssertTool to validate expectations and capture bug reports when checks fail.
+      Use the qaPublishIssueTool to publish stored bug reports to GitHub or Jira when requested.
 `,
   model: process.env.MODEL || 'openai/gpt-4o',
-  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool, qaRunTool, qaAssertTool },
+  tools: { pageActTool, pageObserveTool, pageExtractTool, pageNavigateTool, qaRunTool, qaAssertTool, qaPublishIssueTool },
   memory: memory,
 });
